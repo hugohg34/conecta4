@@ -1,0 +1,23 @@
+@startuml
+title "Conecta 4 - Domain Model v.0.0.1"
+class Conecta4
+class Board
+class Player
+class Pice
+class Goal
+enum Color{
+RED
+YELLOW
+}
+class Turn
+
+Conecta4 *--> Board
+Conecta4 *--> Turn
+Conecta4 *--> "2" Player
+Conecta4 *--> Goal
+Board o--> "21x2" Pice
+Board *--> "7x7" Coordinate
+Pice --> Color
+Player *--> Color
+Player o--> Goal
+@enduml
