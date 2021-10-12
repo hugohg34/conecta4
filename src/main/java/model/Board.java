@@ -4,13 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-	
+
 	public static final int COLUMNS = 7;
 	public static final int ROWS = 6;
-	private List<DiscDrop> discDropList = new ArrayList<>(); 
-	
+	List<List<DiscDrop>> discDropList;
+
+	public Board() {
+		initBoard();
+	}
+
+	private void initBoard() {
+		discDropList = new ArrayList<>();
+		for (int i = 0; i < COLUMNS; i++) {
+			discDropList.add(new ArrayList<>());
+		}
+	}
+
 	public boolean isFull() {
-		return discDropList.size() == COLUMNS * ROWS;
+		for (int i = 0; i < COLUMNS; i++) {
+			if (! isFullColumn(i)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private boolean isFullColumn(int index) {
+		return discDropList.get(index).size() == ROWS;
 	}
 
 	public boolean isValidDropping() {
@@ -19,8 +39,11 @@ public class Board {
 	}
 
 	public void dropping(DiscDrop discDrop) {
-		assert(isFull());
-		this.discDropList.add(discDrop);
+		this.discDropList.get(discDrop.getColumn()).add(discDrop);
+	}
+	
+	public List<List<DiscDrop>> getDiscDropList(){
+		return discDropList;
 	}
 
 }

@@ -7,8 +7,8 @@ import utils.Console;
 public class DiscDropView {
 
 	public DiscDrop dropping(Color color) {
-		Console.getInstance().readString("Please dropping disc of color " + color.toString());
-		return new DiscDrop();
+		int column = Console.getInstance().readInt("Please insert column to dropping disc of color " + color.toString());
+		return new DiscDrop(color, column);
 		
 	}
 
