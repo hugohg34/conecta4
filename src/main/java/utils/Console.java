@@ -4,35 +4,62 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Console {
-	
+
+	private static Console instance;
 	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-	
-	public read() {
-		String input = null;
-		do {
-			input = this.bufferedReader.readLine();
-		}while(input != null);
-		return input;
-			
-
+	private Console() {
 	}
-	
-	public String readString(String title) {
+
+	public static Console getInstance() {
+		if (instance == null) {
+			instance = new Console();
+		}
+
+		return instance;
+	}
+
+	public String readString(String label) {
 		String input = null;
-		boolean ok = false;
 		do {
-			this.write(title);
+			print(label + ": ");
 			try {
 				input = this.bufferedReader.readLine();
-				ok = true;
-			} catch (Exception ex) {
-				this.writeError("characte string");
+			} catch (Exception e) {
+				inputFormatError("String");
 			}
-			assert ok;
-		} while (!ok);
+		} while (input == null);
+
 		return input;
 	}
 
+	public void print(String string) {
+		System.out.print(string);
+	}
+	
+	public void println(String string) {
+		System.out.println(string);
+	}
+
+	private void inputFormatError(String string) {
+		printError("Error input required " + string + "value.");
+	}
+	
+	public void printError(String string) {
+		System.err.println(string);
+	}
+
+	public int readInt(String label) {
+		Integer input = null;
+		do {
+			try {
+				input = Integer.valueOf(readString(label));
+			} catch (Exception e) {
+				inputFormatError("integer");
+			}
+		} while (input == null);
+
+		return input.intValue();
+	}
 
 }
