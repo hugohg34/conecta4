@@ -8,14 +8,12 @@ public class Console {
 	private static Console instance;
 	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-	private Console() {
-	}
+	private Console() {}
 
 	public static Console getInstance() {
 		if (instance == null) {
 			instance = new Console();
 		}
-
 		return instance;
 	}
 
@@ -29,14 +27,13 @@ public class Console {
 				inputFormatError("String");
 			}
 		} while (input == null);
-
 		return input;
 	}
 
 	public void print(String string) {
 		System.out.print(string);
 	}
-	
+
 	public void println(String string) {
 		System.out.println(string);
 	}
@@ -44,7 +41,7 @@ public class Console {
 	private void inputFormatError(String string) {
 		printError("Error input required " + string + " value.");
 	}
-	
+
 	public void printError(String string) {
 		System.err.println(string);
 	}
@@ -58,7 +55,6 @@ public class Console {
 				inputFormatError("integer");
 			}
 		} while (input == null);
-
 		return input.intValue();
 	}
 

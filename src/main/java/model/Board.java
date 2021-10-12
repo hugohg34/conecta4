@@ -23,34 +23,34 @@ public class Board {
 	}
 
 	public void dropping(DiscDrop discDrop) {
-		this.discDropList.get(discDrop.getColumn()-1).add(discDrop);
+		this.discDropList.get(discDrop.getColumn() - 1).add(discDrop);
 	}
-	
+
 	public DiscColor getDisc(int column, int row) {
-		int columnIndex = column -1;
-		int rowIndex = row -1;
+		int columnIndex = column - 1;
+		int rowIndex = row - 1;
 		List<DiscDrop> columList = this.discDropList.get(columnIndex);
 		DiscColor discColor = DiscColor.NULL;
-		if(columList.size() > rowIndex) {
+		if (columList.size() > rowIndex) {
 			discColor = columList.get(rowIndex).getColor();
 		}
 		return discColor;
 	}
-	
+
 	public boolean isValidDropping(DiscDrop discDrop) {
 		int column = discDrop.getColumn();
-		if(column > COLUMNS) {
+		if (column > COLUMNS) {
 			return false;
 		}
-		if(column < 1) {
+		if (column < 1) {
 			return false;
 		}
-		return !isFullColumn(column -1);
+		return !isFullColumn(column - 1);
 	}
-	
+
 	public boolean isFull() {
 		for (int i = 0; i < COLUMNS; i++) {
-			if (! isFullColumn(i)) {
+			if (!isFullColumn(i)) {
 				return false;
 			}
 		}
@@ -61,6 +61,5 @@ public class Board {
 		int columIndex = columnIndex;
 		return discDropList.get(columIndex).size() >= ROWS;
 	}
-
 
 }

@@ -6,7 +6,7 @@ public class DiscDrop {
 	private DiscColor color;
 	private int column;
 	private int row;
-	
+
 	public DiscDrop(DiscColor color, int column) {
 		this.color = color;
 		this.column = column;
