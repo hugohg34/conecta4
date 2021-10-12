@@ -3,9 +3,9 @@ package controller;
 import model.Board;
 import model.DiscDrop;
 import types.DiscColor;
-import view.BoardView;
-import view.DiscDropView;
-import view.ViewFactory;
+import view.console.BoardView;
+import view.console.DiscDropView;
+import view.console.ViewFactory;
 
 public class PlayController {
 

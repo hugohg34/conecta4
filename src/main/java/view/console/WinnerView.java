@@ -1,4 +1,4 @@
-package view;
+package view.console;
 
 import types.DiscColor;
 import utils.Console;

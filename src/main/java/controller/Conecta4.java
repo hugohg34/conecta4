@@ -2,7 +2,7 @@ package controller;
 
 import model.Turn;
 import view.ConsoleViewFactory;
-import view.ViewFactory;
+import view.console.ViewFactory;
 
 public class Conecta4 {
 
