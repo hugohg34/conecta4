@@ -26,7 +26,7 @@ public class Conecta4 {
 			}
 			this.turn.change();
 		} while (!playController.isEndGame());
-		//Fin partida
+		this.viewFactory.getEndGameView().show();
 	}
 
 	public static void main(String[] args) {

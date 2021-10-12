@@ -5,7 +5,6 @@ import model.DiscDrop;
 import types.Color;
 import view.BoardView;
 import view.DiscDropView;
-import view.ErrorView;
 import view.ViewFactory;
 
 public class PlayController {
@@ -29,7 +28,7 @@ public class PlayController {
 			discDrop = discDropView.dropping(color);
 			validDropping = board.isValidDropping(discDrop);
 			if (!validDropping) {
-				ErrorView.getInstanse().show("invalid Dropping");
+				discDropView.showInvaidDropping();
 			}
 		} while (!validDropping);
 		board.dropping(discDrop);

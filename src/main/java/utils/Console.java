@@ -42,7 +42,7 @@ public class Console {
 	}
 
 	private void inputFormatError(String string) {
-		printError("Error input required " + string + "value.");
+		printError("Error input required " + string + " value.");
 	}
 	
 	public void printError(String string) {

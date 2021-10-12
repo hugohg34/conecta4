@@ -12,19 +12,26 @@ public class BoardView {
 
 	public void show() {
 		assert (board != null);
+		Console console = Console.getInstance();
 		
-		
-		for(int i = Board.ROWS; i >= 0; --i) {
-			for(int j = 0; j < Board.COLUMNS; j++) {
-				List<DiscDrop> columList = board.getDiscDropList().get(j);
-				if(columList.size() > i) {
-					Console.getInstance().print(" " + columList.get(i).getColor().toString() + " ");
-				}else {
-					Console.getInstance().print(" o ");
+		console.println(getSeparator());
+		for(int rowIndex = Board.ROWS-1; rowIndex >= 0; rowIndex--) {
+			for(int colIndex = 0; colIndex < Board.COLUMNS; colIndex++) {
+				//console.printError("colIndex: " + colIndex);
+				List<DiscDrop> columList = board.getDiscDropList().get(colIndex);
+				char disc = 'o';
+				if(columList.size() > rowIndex) {
+					disc = columList.get(rowIndex).getColor().getChar();
 				}
+				console.print(String.format("| %s |", disc));
 			}
 			Console.getInstance().println("");
 		}
+		console.println(getSeparator());
+	}
+	
+	private String getSeparator() {
+		return String.format("|%33s|", "").replace(" ", "-");
 	}
 
 	public void setBoard(Board board) {

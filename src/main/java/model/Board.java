@@ -30,7 +30,7 @@ public class Board {
 	}
 
 	private boolean isFullColumn(int index) {
-		return discDropList.get(index).size() > ROWS;
+		return discDropList.get(index).size() >= ROWS;
 	}
 
 	public boolean isValidDropping(DiscDrop discDrop) {

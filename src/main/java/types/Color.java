@@ -9,8 +9,7 @@ public enum Color {
 		this.value = value;
 	}
 
-	@Override
-	public String toString() {
-		return String.valueOf(this.value);
+	public char getChar() {
+		return this.value;
 	}
 }

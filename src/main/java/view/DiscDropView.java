@@ -12,4 +12,9 @@ public class DiscDropView {
 		
 	}
 
+	public void showInvaidDropping() {
+		Console.getInstance().printError("invalid Dropping");
+		
+	}
+
 }
