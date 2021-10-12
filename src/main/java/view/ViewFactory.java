@@ -7,4 +7,9 @@ public class ViewFactory {
 		return new BoardView();
 	}
 
+	public WinnerView getWinnerView() {
+		// TODO Auto-generated method stub
+		return new WinnerView();
+	}
+
 }

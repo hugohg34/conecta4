@@ -8,7 +8,7 @@ public class Board {
 
 	public boolean isValidDropping() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	public void dropping(DiscDrop discDrop) {

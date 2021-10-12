@@ -2,7 +2,7 @@ package controller;
 
 import model.Board;
 import model.DiscDrop;
-import model.Turn;
+import types.Color;
 import view.BoardView;
 import view.DiscDropView;
 import view.ErrorView;
@@ -12,23 +12,21 @@ public class PlayController {
 
 	private BoardView boardView;
 	private Board board;
-	private Turn turn;
 	private DiscDropView discDropView;
 
 	public PlayController(ViewFactory viewFactory) {
 		this.boardView = viewFactory.getBoardView();
 		this.discDropView = new DiscDropView();
-		this.turn = new Turn();
 		this.board = new Board();
 		boardView.setBoard(board);
 	}
 
-	public void play() {
+	public void play(Color color) {
 		boardView.show();
 		DiscDrop discDrop;
 		boolean validDropping;
 		do {
-			discDrop = discDropView.dropping(turn.getColor());
+			discDrop = discDropView.dropping(color);
 			validDropping = board.isValidDropping();
 			if (!validDropping) {
 				ErrorView.getInstanse().show("invalid Dropping");
@@ -38,7 +36,12 @@ public class PlayController {
 	}
 
 	public boolean isEndGame() {
-		return board.isFull();
+		return board.isFull() || isSolvedGame();
+	}
+
+	public boolean isSolvedGame() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

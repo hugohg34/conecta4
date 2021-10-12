@@ -1,21 +1,30 @@
 package controller;
 
+import model.Turn;
 import view.ConsoleViewFactory;
 import view.ViewFactory;
 
 public class Conecta4 {
 
-	ViewFactory viewFactory;
-	PlayController playController;
+	private ViewFactory viewFactory;
+	private PlayController playController;
+	private Turn turn;
+
 
 	Conecta4() {
-		viewFactory = new ConsoleViewFactory();
-		playController = new PlayController(viewFactory);
+		this.viewFactory = new ConsoleViewFactory();
+		this.playController = new PlayController(viewFactory);
+		this.turn = new Turn();
+		
 	}
 
 	public void play() {
 		do {
-			playController.play();
+			this.playController.play(turn.getColor());
+			if(playController.isSolvedGame()) {
+				viewFactory.getWinnerView().show(turn.getColor());
+			}
+			this.turn.change();
 		} while (!playController.isEndGame());
 	}
 

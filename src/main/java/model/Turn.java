@@ -17,7 +17,7 @@ public class Turn {
 	}
 	
 	public void change() {
-		this.colorIndex = this.colorIndex++  % Color.values().length;
+		this.colorIndex = (this.colorIndex + 1)  % Color.values().length;
 	}
 
 }
