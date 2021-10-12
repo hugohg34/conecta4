@@ -1,5 +1,7 @@
 package view;
 
+import utils.Console;
+
 public class ErrorView {
 	
 	private static ErrorView instance;
@@ -12,7 +14,7 @@ public class ErrorView {
 	}
 
 	public void show(String string) {
-		System.out.println("Error " + string);
+		Console.getInstance().printError(string);
 	}
 
 }
