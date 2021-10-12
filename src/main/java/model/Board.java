@@ -1,9 +1,16 @@
 package model;
 
-public class Board {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Board {
+	
+	public static final int COLUMNS = 7;
+	public static final int ROWS = 6;
+	private List<DiscDrop> discDropList = new ArrayList<>(); 
+	
 	public boolean isFull() {
-		return false;
+		return discDropList.size() == COLUMNS * ROWS;
 	}
 
 	public boolean isValidDropping() {
@@ -12,8 +19,8 @@ public class Board {
 	}
 
 	public void dropping(DiscDrop discDrop) {
-		// TODO Auto-generated method stub
-		
+		assert(isFull());
+		this.discDropList.add(discDrop);
 	}
 
 }
