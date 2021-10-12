@@ -22,33 +22,8 @@ public class Board {
 		}
 	}
 
-	public boolean isFull() {
-		for (int i = 0; i < COLUMNS; i++) {
-			if (! isFullColumn(i)) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	private boolean isFullColumn(int index) {
-		return discDropList.get(index).size() >= ROWS;
-	}
-
-	public boolean isValidDropping(DiscDrop discDrop) {
-		int column = discDrop.getColumn();
-		if(column > COLUMNS) {
-			return false;
-		}
-		return !isFullColumn(column);
-	}
-
 	public void dropping(DiscDrop discDrop) {
-		this.discDropList.get(discDrop.getColumn()).add(discDrop);
-	}
-	
-	public List<List<DiscDrop>> getDiscDropList(){
-		return discDropList;
+		this.discDropList.get(discDrop.getColumn()-1).add(discDrop);
 	}
 	
 	public DiscColor getDisc(int column, int row) {
@@ -60,6 +35,31 @@ public class Board {
 			discColor = columList.get(rowIndex).getColor();
 		}
 		return discColor;
+	}
+	
+	public boolean isValidDropping(DiscDrop discDrop) {
+		int column = discDrop.getColumn();
+		if(column > COLUMNS) {
+			return false;
+		}
+		if(column < 1) {
+			return false;
+		}
+		return !isFullColumn(column -1);
+	}
+	
+	public boolean isFull() {
+		for (int i = 0; i < COLUMNS; i++) {
+			if (! isFullColumn(i)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private boolean isFullColumn(int columnIndex) {
+		int columIndex = columnIndex;
+		return discDropList.get(columIndex).size() >= ROWS;
 	}
 
 
