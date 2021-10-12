@@ -10,18 +10,17 @@ public class Conecta4 {
 	private PlayController playController;
 	private Turn turn;
 
-
 	Conecta4() {
 		this.viewFactory = new ConsoleViewFactory();
 		this.playController = new PlayController(viewFactory);
 		this.turn = new Turn();
-		
+
 	}
 
 	public void play() {
 		do {
 			this.playController.play(turn.getColor());
-			if(playController.isSolvedGame()) {
+			if (playController.isSolvedGame()) {
 				viewFactory.getWinnerView().show(turn.getColor());
 			}
 			this.turn.change();

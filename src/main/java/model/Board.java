@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import types.DiscColor;
-import utils.Console;
 
 public class Board {
 
@@ -56,7 +55,7 @@ public class Board {
 		int columnIndex = column -1;
 		int rowIndex = row -1;
 		List<DiscDrop> columList = this.discDropList.get(columnIndex);
-		DiscColor discColor = discColor.NULL;
+		DiscColor discColor = DiscColor.NULL;
 		if(columList.size() > rowIndex) {
 			discColor = columList.get(rowIndex).getColor();
 		}
