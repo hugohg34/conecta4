@@ -9,18 +9,18 @@ import view.ErrorView;
 import view.ViewFactory;
 
 public class PlayController {
-	
+
 	private BoardView boardView;
 	private Board board;
 	private Turn turn;
 	private DiscDropView discDropView;
 
 	public PlayController(ViewFactory viewFactory) {
-		
-		board = new Board();
+		this.boardView = viewFactory.getBoardView();
+		this.discDropView = new DiscDropView();
+		this.turn = new Turn();
+		this.board = new Board();
 		boardView.setBoard(board);
-		turn = new Turn();
-		discDropView = new DiscDropView();
 	}
 
 	public void play() {
@@ -28,12 +28,12 @@ public class PlayController {
 		DiscDrop discDrop;
 		boolean validDropping;
 		do {
-			discDrop = discDropView.dropping(turn.getPlayer());
+			discDrop = discDropView.dropping(turn.getColor());
 			validDropping = board.isValidDropping();
-			if(!validDropping) {
-				ErrorView.getInstanse().show("");
+			if (!validDropping) {
+				ErrorView.getInstanse().show("invalid Dropping");
 			}
-		}while(!validDropping);
+		} while (!validDropping);
 		board.dropping(discDrop);
 	}
 
