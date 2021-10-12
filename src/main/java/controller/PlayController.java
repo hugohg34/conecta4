@@ -27,7 +27,7 @@ public class PlayController {
 		boolean validDropping;
 		do {
 			discDrop = discDropView.dropping(color);
-			validDropping = board.isValidDropping();
+			validDropping = board.isValidDropping(discDrop);
 			if (!validDropping) {
 				ErrorView.getInstanse().show("invalid Dropping");
 			}

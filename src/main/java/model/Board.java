@@ -30,12 +30,15 @@ public class Board {
 	}
 
 	private boolean isFullColumn(int index) {
-		return discDropList.get(index).size() == ROWS;
+		return discDropList.get(index).size() > ROWS;
 	}
 
-	public boolean isValidDropping() {
-		// TODO Auto-generated method stub
-		return true;
+	public boolean isValidDropping(DiscDrop discDrop) {
+		int column = discDrop.getColumn();
+		if(column > COLUMNS) {
+			return false;
+		}
+		return !isFullColumn(column);
 	}
 
 	public void dropping(DiscDrop discDrop) {
