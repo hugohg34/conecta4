@@ -1,11 +1,11 @@
 package types;
 
-public enum Color {
-	RED('R'), YELLOW('Y');
+public enum DiscColor {
+	RED('R'), YELLOW('Y'), NULL('o');
 
 	private char value;
 
-	Color(char value) {
+	DiscColor(char value) {
 		this.value = value;
 	}
 

@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import types.DiscColor;
+import utils.Console;
+
 public class Board {
 
 	public static final int COLUMNS = 7;
@@ -48,5 +51,17 @@ public class Board {
 	public List<List<DiscDrop>> getDiscDropList(){
 		return discDropList;
 	}
+	
+	public DiscColor getDisc(int column, int row) {
+		int columnIndex = column -1;
+		int rowIndex = row -1;
+		List<DiscDrop> columList = this.discDropList.get(columnIndex);
+		DiscColor discColor = discColor.NULL;
+		if(columList.size() > rowIndex) {
+			discColor = columList.get(rowIndex).getColor();
+		}
+		return discColor;
+	}
+
 
 }

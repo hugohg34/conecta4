@@ -2,22 +2,23 @@ package model;
 
 import java.util.Random;
 
-import types.Color;
+import types.DiscColor;
 
 public class Turn {
 	
-	private int colorIndex;
+	private int currentPlayer;
+	private DiscColor[] players = {DiscColor.RED, DiscColor.YELLOW}; 
 	
 	public Turn(){
-		this.colorIndex = new Random().nextInt(Color.values().length);
+		this.currentPlayer = new Random().nextInt(players.length);
 	}
 
-	public Color getColor() {
-		return Color.values()[this.colorIndex];
+	public DiscColor getColor() {
+		return players[this.currentPlayer];
 	}
 	
 	public void change() {
-		this.colorIndex = (this.colorIndex + 1)  % Color.values().length;
+		this.currentPlayer = (this.currentPlayer + 1)  % players.length;
 	}
 
 }

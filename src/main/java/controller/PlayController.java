@@ -2,7 +2,7 @@ package controller;
 
 import model.Board;
 import model.DiscDrop;
-import types.Color;
+import types.DiscColor;
 import view.BoardView;
 import view.DiscDropView;
 import view.ViewFactory;
@@ -20,7 +20,7 @@ public class PlayController {
 		boardView.setBoard(board);
 	}
 
-	public void play(Color color) {
+	public void play(DiscColor color) {
 		boardView.show();
 		DiscDrop discDrop;
 		boolean validDropping;

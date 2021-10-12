@@ -1,9 +1,6 @@
 package view;
 
-import java.util.List;
-
 import model.Board;
-import model.DiscDrop;
 import utils.Console;
 
 public class BoardView {
@@ -13,25 +10,16 @@ public class BoardView {
 	public void show() {
 		assert (board != null);
 		Console console = Console.getInstance();
-		
-		console.println(getSeparator());
-		for(int rowIndex = Board.ROWS-1; rowIndex >= 0; rowIndex--) {
-			for(int colIndex = 0; colIndex < Board.COLUMNS; colIndex++) {
-				//console.printError("colIndex: " + colIndex);
-				List<DiscDrop> columList = board.getDiscDropList().get(colIndex);
-				char disc = 'o';
-				if(columList.size() > rowIndex) {
-					disc = columList.get(rowIndex).getColor().getChar();
-				}
-				console.print(String.format("| %s |", disc));
+		String separator = String.format("|%33s|", "").replace(" ", "-");
+		console.println(separator);
+		for (int row = Board.ROWS; row > 0; row--) {
+			for (int column = 1; column <= Board.COLUMNS; column++) {
+				char discChar = board.getDisc(column, row).getChar();
+				console.print(String.format("| %s |", discChar));
 			}
 			Console.getInstance().println("");
 		}
-		console.println(getSeparator());
-	}
-	
-	private String getSeparator() {
-		return String.format("|%33s|", "").replace(" ", "-");
+		console.println(separator);
 	}
 
 	public void setBoard(Board board) {

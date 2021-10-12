@@ -1,22 +1,22 @@
 package model;
 
-import types.Color;
+import types.DiscColor;
 
 public class DiscDrop {
-	private Color color;
+	private DiscColor color;
 	private int column;
 	private int row;
 	
-	public DiscDrop(Color color, int column) {
+	public DiscDrop(DiscColor color, int column) {
 		this.color = color;
 		this.column = column;
 	}
 
-	public Color getColor() {
+	public DiscColor getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
+	public void setColor(DiscColor color) {
 		this.color = color;
 	}
 
