@@ -14,7 +14,6 @@ public class Conecta4 {
 		this.viewFactory = new ConsoleViewFactory();
 		this.playController = new PlayController(viewFactory);
 		this.turn = new Turn();
-
 	}
 
 	public void play() {

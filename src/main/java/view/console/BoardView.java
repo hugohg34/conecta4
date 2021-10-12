@@ -10,9 +10,9 @@ public class BoardView {
 	public void show() {
 		assert (board != null);
 		Console console = Console.getInstance();
-		String separator = String.format("|%33s|", "").replace(" ", "-");		
+		String separator = String.format("|%33s|", "").replace(" ", "-");
 		console.println(separator);
-		console.println(String.format("|%14s%s%14s|", "","BOARD",""));
+		console.println(String.format("|%14s%s%14s|", "", "BOARD", ""));
 		console.println(separator);
 		for (int row = Board.ROWS; row > 0; row--) {
 			for (int column = 1; column <= Board.COLUMNS; column++) {
