@@ -1,5 +1,14 @@
 # CONNECT FOUR
 
+**Asignatura Diseño y calidad software**
+
+Práctica 1
+
+Tema 2 - Disciplina de diseño software
+
++ **Autor**: Víctor Hugo Vallejos Chacón
++ **Autoevaluación**: 9,0
+
 ## Rules
 * [Wikipedia](https://en.wikipedia.org/wiki/Connect_Four)
 
