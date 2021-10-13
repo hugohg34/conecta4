@@ -33,7 +33,6 @@ public class PlayController {
 			}
 		} while (!validDropping);
 		board.dropping(discDrop);
-		
 	}
 
 	public boolean isEndGame() {
