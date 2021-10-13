@@ -9,21 +9,75 @@ public class Coordinate {
 		this.x = x;
 		this.y = y;
 	}
+	public Coordinate getDisplacedHorizontal(int displacement) {
+		return new Coordinate(this.x + displacement, this.y);
+	}
 
 	public Coordinate getDisplacedHorizontal() {
-		return new Coordinate(this.x + 1, this.y);
+		return getDisplacedHorizontal(1);
+	}
+
+	public Coordinate getDisplacedVertical(int displacement) {
+		return new Coordinate(this.x, this.y + displacement);
 	}
 
 	public Coordinate getDisplacedVertical() {
-		return new Coordinate(this.x, this.y + 1);
+		return getDisplacedVertical(1);
+	}
+	//
+
+	public Coordinate getDisplacedDiagonalSecondX(int displacement) {
+		return new Coordinate(this.x + displacement, this.y + displacement);
+	}
+	
+	public Coordinate getDisplacedDiagonalSecondY(int displacement) {
+		return new Coordinate(this.x - displacement, this.y - displacement);
+	}
+	
+	public Coordinate getDisplacedDiagonalX(int displacement) {
+		return new Coordinate(this.x + displacement, this.y - displacement);
+	}
+	
+	public Coordinate getDisplacedDiagonalY(int displacement) {
+		return new Coordinate(this.x - displacement, this.y + displacement);
+	}
+	
+	//
+	
+	public Coordinate getDisplacedHorizontal(int displacement) {
+		return new Coordinate(this.x + displacement, this.y);
+	}
+
+	public Coordinate getDisplacedHorizontal() {
+		return getDisplacedHorizontal(1);
+	}
+
+	public Coordinate getDisplacedVertical(int displacement) {
+		return new Coordinate(this.x, this.y + displacement);
+	}
+
+	public Coordinate getDisplacedVertical() {
+		return getDisplacedVertical(1);
+	}
+	
+	public Coordinate getDisplacedDiagonal(int displacement) {
+		return new Coordinate(this.x + displacement, this.y + displacement);
+	}
+	
+	public Coordinate getDisplacedDiagonalSup(int displacement) {
+		return new Coordinate(this.x + displacement, this.y + displacement);
 	}
 
 	public Coordinate getDisplacedDiagonal() {
-		return new Coordinate(this.x + 1, this.y + 1);
+		return getDisplacedDiagonal(1);
+	}
+
+	public Coordinate getDisplacedDiagonalInv(int displacement) {
+		return new Coordinate(this.x - displacement, this.y + displacement);
 	}
 
 	public Coordinate getDisplacedDiagonalInv() {
-		return new Coordinate(this.x - 1, this.y + 1);
+		return getDisplacedDiagonalInv(1);
 	}
 
 	public int getX() {

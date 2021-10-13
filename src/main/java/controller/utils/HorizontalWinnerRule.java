@@ -10,8 +10,8 @@ public class HorizontalWinnerRule extends WinnerRule{
 	}
 
 	@Override
-	protected Coordinate getDisplaced(Coordinate coortinate) {
-		return coortinate.getDisplacedHorizontal();
+	protected Coordinate getDisplaced(Coordinate coortinate, int displacement) {
+		return coortinate.getDisplacedHorizontal(displacement);
 	}
 
 }
