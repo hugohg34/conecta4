@@ -13,35 +13,36 @@ public class PlayController {
 	private BoardView boardView;
 	private Board board;
 	private DiscDropView discDropView;
+	private WinnerChecker winnerChecker;
 
 	public PlayController(ViewFactory viewFactory) {
 		this.boardView = viewFactory.getBoardView();
 		this.discDropView = new DiscDropView();
 		this.board = new Board();
-		boardView.setBoard(board);
+		this.winnerChecker = new WinnerChecker(board);
+		this.boardView.setBoard(board);
 	}
 
 	public void play(DiscColor color) {
-		boardView.show();
+		this.boardView.show();
 		DiscDrop discDrop;
 		boolean validDropping;
 		do {
-			discDrop = discDropView.dropping(color);
-			validDropping = board.isValidDropping(discDrop);
+			discDrop = this.discDropView.dropping(color);
+			validDropping = this.board.isValidDropping(discDrop);
 			if (!validDropping) {
-				discDropView.showInvaidDropping();
+				this.discDropView.showInvaidDropping();
 			}
 		} while (!validDropping);
-		board.dropping(discDrop);
+		this.board.dropping(discDrop);
 	}
 
 	public boolean isEndGame() {
-		return board.isFull() || isWinnerPlay();
+		return this.board.isFull() || isWinnerPlay();
 	}
 
 	public boolean isWinnerPlay() {
-		WinnerChecker wc = new WinnerChecker(board);
-		return wc.isFourInLine();
+		return this.winnerChecker.check();
 	}
 
 }
