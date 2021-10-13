@@ -35,6 +35,6 @@ public class Coordinate {
 	}
 
 	public boolean inCuadrant(Coordinate coordinate) {
-		return coordinate.getX() >= this.x && coordinate.y <= this.getY();
+		return coordinate.getX() >= this.x && coordinate.getX() <= this.y;
 	}
 }
