@@ -1,7 +1,7 @@
 package view;
 
-import view.console.ViewFactory;
+import view.console.ConsoleViewFactory;
 
-public class SwingViewFactory extends ViewFactory {
+public class SwingViewFactory extends ConsoleViewFactory {
 
 }

@@ -1,8 +1,8 @@
 package controller;
 
 import model.Turn;
-import view.ConsoleViewFactory;
-import view.console.ViewFactory;
+import view.ViewFactory;
+import view.console.ConsoleViewFactory;
 
 public class Conecta4 {
 

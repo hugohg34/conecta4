@@ -2,11 +2,13 @@ package view.console;
 
 import model.Board;
 import utils.Console;
+import view.BoardView;
 
-public class BoardView {
+public class ConsoleBoardView implements BoardView {
 
 	private Board board;
 
+	@Override
 	public void show() {
 		assert (this.board != null);
 		Console console = Console.getInstance();
@@ -24,6 +26,7 @@ public class BoardView {
 		console.println(separator);
 	}
 
+	@Override
 	public void setBoard(Board board) {
 		this.board = board;
 	}

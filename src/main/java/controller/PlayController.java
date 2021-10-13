@@ -4,9 +4,10 @@ import controller.utils.WinnerChecker;
 import model.Board;
 import model.DiscDrop;
 import types.DiscColor;
-import view.console.BoardView;
-import view.console.DiscDropView;
-import view.console.ViewFactory;
+import view.BoardView;
+import view.DiscDropView;
+import view.ViewFactory;
+import view.console.ConsoleDiscDropView;
 
 public class PlayController {
 
@@ -17,7 +18,7 @@ public class PlayController {
 
 	public PlayController(ViewFactory viewFactory) {
 		this.boardView = viewFactory.getBoardView();
-		this.discDropView = new DiscDropView();
+		this.discDropView = new ConsoleDiscDropView();
 		this.board = new Board();
 		this.winnerChecker = new WinnerChecker(this.board);
 		this.boardView.setBoard(this.board);
@@ -28,7 +29,7 @@ public class PlayController {
 		DiscDrop discDrop;
 		boolean validDropping;
 		do {
-			discDrop = this.discDropView.dropping(color);
+			discDrop = this.discDropView.read(color);
 			validDropping = this.board.isValidDropping(discDrop);
 			if (!validDropping) {
 				this.discDropView.showInvaidDropping();

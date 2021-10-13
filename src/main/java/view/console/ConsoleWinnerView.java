@@ -2,9 +2,11 @@ package view.console;
 
 import types.DiscColor;
 import utils.Console;
+import view.WinnerView;
 
-public class WinnerView {
+public class ConsoleWinnerView implements WinnerView {
 
+	@Override
 	public void show(DiscColor color) {
 		String separator = String.format("%35s", "").replace(" ", "#");
 		Console.getInstance().println(separator);
