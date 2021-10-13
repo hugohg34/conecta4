@@ -1,5 +1,6 @@
 package controller;
 
+import controller.utils.WinnerChecker;
 import model.Board;
 import model.DiscDrop;
 import types.DiscColor;
@@ -32,15 +33,16 @@ public class PlayController {
 			}
 		} while (!validDropping);
 		board.dropping(discDrop);
+		
 	}
 
 	public boolean isEndGame() {
-		return board.isFull() || isSolvedGame();
+		return board.isFull() || isWinnerPlay();
 	}
 
-	public boolean isSolvedGame() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isWinnerPlay() {
+		WinnerChecker wc = new WinnerChecker(board);
+		return wc.isFourInLine();
 	}
 
 }

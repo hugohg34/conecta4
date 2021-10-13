@@ -19,7 +19,7 @@ public class Conecta4 {
 	public void play() {
 		do {
 			this.playController.play(turn.getColor());
-			if (playController.isSolvedGame()) {
+			if (playController.isWinnerPlay()) {
 				viewFactory.getWinnerView().show(turn.getColor());
 			}
 			this.turn.change();
