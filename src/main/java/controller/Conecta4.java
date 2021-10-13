@@ -24,6 +24,7 @@ public class Conecta4 {
 			}
 			this.turn.change();
 		} while (!this.playController.isEndGame());
+		this.viewFactory.getBoardView().show();
 		this.viewFactory.getEndGameView().show();
 	}
 
