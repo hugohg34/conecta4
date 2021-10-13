@@ -19,8 +19,8 @@ public class PlayController {
 		this.boardView = viewFactory.getBoardView();
 		this.discDropView = new DiscDropView();
 		this.board = new Board();
-		this.winnerChecker = new WinnerChecker(board);
-		this.boardView.setBoard(board);
+		this.winnerChecker = new WinnerChecker(this.board);
+		this.boardView.setBoard(this.board);
 	}
 
 	public void play(DiscColor color) {

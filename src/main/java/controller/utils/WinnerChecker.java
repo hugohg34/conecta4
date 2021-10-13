@@ -11,10 +11,10 @@ public class WinnerChecker {
 
 	public WinnerChecker(Board board) {
 		this.winnerRuleList = new ArrayList<>();
-		winnerRuleList.add(new DiagonalWinnerRule(board));
-		winnerRuleList.add(new DiagonalInvWinnerRule(board));
-		winnerRuleList.add(new HorizontalWinnerRule(board));
-		winnerRuleList.add(new VerticalWinnerRule(board));
+		this.winnerRuleList.add(new DiagonalWinnerRule(board));
+		this.winnerRuleList.add(new DiagonalInvWinnerRule(board));
+		this.winnerRuleList.add(new HorizontalWinnerRule(board));
+		this.winnerRuleList.add(new VerticalWinnerRule(board));
 	}
 
 	public boolean check() {

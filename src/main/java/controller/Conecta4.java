@@ -12,18 +12,18 @@ public class Conecta4 {
 
 	Conecta4() {
 		this.viewFactory = new ConsoleViewFactory();
-		this.playController = new PlayController(viewFactory);
+		this.playController = new PlayController(this.viewFactory);
 		this.turn = new Turn();
 	}
 
 	public void play() {
 		do {
-			this.playController.play(turn.getColor());
-			if (playController.isWinnerPlay()) {
-				viewFactory.getWinnerView().show(turn.getColor());
+			this.playController.play(this.turn.getColor());
+			if (this.playController.isWinnerPlay()) {
+				this.viewFactory.getWinnerView().show(this.turn.getColor());
 			}
 			this.turn.change();
-		} while (!playController.isEndGame());
+		} while (!this.playController.isEndGame());
 		this.viewFactory.getEndGameView().show();
 	}
 

@@ -10,15 +10,15 @@ public class Turn {
 	private DiscColor[] players = {DiscColor.RED, DiscColor.YELLOW}; 
 	
 	public Turn(){
-		this.currentPlayer = new Random().nextInt(players.length);
+		this.currentPlayer = new Random().nextInt(this.players.length);
 	}
 
 	public DiscColor getColor() {
-		return players[this.currentPlayer];
+		return this.players[this.currentPlayer];
 	}
 	
 	public void change() {
-		this.currentPlayer = (this.currentPlayer + 1)  % players.length;
+		this.currentPlayer = (this.currentPlayer + 1)  % this.players.length;
 	}
 
 }

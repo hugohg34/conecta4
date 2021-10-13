@@ -16,9 +16,9 @@ public class Board {
 	}
 
 	private void initBoard() {
-		discDropList = new ArrayList<>();
+		this.discDropList = new ArrayList<>();
 		for (int i = 0; i < COLUMNS; i++) {
-			discDropList.add(new ArrayList<>());
+			this.discDropList.add(new ArrayList<>());
 		}
 	}
 
@@ -59,7 +59,7 @@ public class Board {
 
 	private boolean isFullColumn(int columnIndex) {
 		int columIndex = columnIndex;
-		return discDropList.get(columIndex).size() >= ROWS;
+		return this.discDropList.get(columIndex).size() >= ROWS;
 	}
 
 }

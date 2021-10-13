@@ -13,7 +13,7 @@ public class DiscDrop {
 	}
 
 	public DiscColor getColor() {
-		return color;
+		return this.color;
 	}
 
 	public void setColor(DiscColor color) {
@@ -21,7 +21,7 @@ public class DiscDrop {
 	}
 
 	public int getColumn() {
-		return column;
+		return this.column;
 	}
 
 	public void setRow(int row) {
@@ -29,7 +29,7 @@ public class DiscDrop {
 	}
 
 	public int getRow() {
-		return row;
+		return this.row;
 	}
 
 }

@@ -8,7 +8,7 @@ public class BoardView {
 	private Board board;
 
 	public void show() {
-		assert (board != null);
+		assert (this.board != null);
 		Console console = Console.getInstance();
 		String separator = String.format("|%33s|", "").replace(" ", "-");
 		console.println(separator);
@@ -16,7 +16,7 @@ public class BoardView {
 		console.println(separator);
 		for (int row = Board.ROWS; row > 0; row--) {
 			for (int column = 1; column <= Board.COLUMNS; column++) {
-				char discChar = board.getDisc(column, row).getChar();
+				char discChar = this.board.getDisc(column, row).getChar();
 				console.print(String.format("| %s |", discChar));
 			}
 			Console.getInstance().println("");

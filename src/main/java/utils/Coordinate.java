@@ -27,14 +27,14 @@ public class Coordinate {
 	}
 
 	public int getX() {
-		return x;
+		return this.x;
 	}
 
 	public int getY() {
-		return y;
+		return this.y;
 	}
 
 	public boolean inCuadrant(Coordinate coordinate) {
-		return coordinate.getX() >= this.getX() && coordinate.getX() <= this.getY();
+		return coordinate.getX() >= this.x && coordinate.y <= this.getY();
 	}
 }
