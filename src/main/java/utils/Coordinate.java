@@ -1,5 +1,8 @@
 package utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Coordinate {
 
 	private int x;
@@ -9,6 +12,20 @@ public class Coordinate {
 		this.x = x;
 		this.y = y;
 	}
+	
+	public Coordinate[] getHorizontalNeighbors(int neighbors) {
+		List<Coordinate> neighbordList = new ArrayList<>();
+		for (int i = 1; i < numDisplaced; i++) {
+			neighbordList.add(getDisplaced(coordinate, i));
+		}
+
+		Coordinate[] neighbords = new Coordinate[neighbors * 2];
+		for (int = 1; i < neighbors; i++) {
+			neighbords[i] = getDisplacedHorizontal(i);
+			
+		}
+	}
+	
 	public Coordinate getDisplacedHorizontal(int displacement) {
 		return new Coordinate(this.x + displacement, this.y);
 	}
