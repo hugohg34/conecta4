@@ -1,20 +1,18 @@
-package controller.utils;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Board;
-import model.DiscDrop;
 import types.DiscColor;
 import utils.CardinalDirection;
 import utils.Coordinate;
 
-public class WinnerRuleCord {
+public class BoardWinerRule {
 
 	private Board board;
 	private static final int INLINE_TO_GOAL = 4;
 
-	public WinnerRuleCord(Board board) {
+	public BoardWinerRule(Board board) {
 		this.board = board;
 	}
 

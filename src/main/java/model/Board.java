@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.utils.WinnerRuleCord;
 import types.DiscColor;
 
 public class Board {
@@ -68,7 +67,7 @@ public class Board {
 	}
 
 	public boolean isFourInLine() {
-		WinnerRuleCord winnerRule = new WinnerRuleCord(this);
+		BoardWinerRule winnerRule = new BoardWinerRule(this);
 		return winnerRule.isFourInLine(this.lastDiscDrop);
 	}
 
