@@ -1,8 +1,5 @@
 package utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Coordinate {
 
 	private int x;
@@ -13,90 +10,33 @@ public class Coordinate {
 		this.y = y;
 	}
 	
-	public Coordinate[] getHorizontalNeighbors(int neighbors) {
-		List<Coordinate> neighbordList = new ArrayList<>();
-		for (int i = 1; i < numDisplaced; i++) {
-			neighbordList.add(getDisplaced(coordinate, i));
+
+/*
+			  	 norte/ North
+          			  |
+		North-West \  |  / North-East
+					\ | /
+	Oeste/West ______\|/_______ Estes/East
+     		   		 /|\
+     		  		/ | \
+     	 South-West/  |  \ South-East
+	     			  |
+			   		 Sur/South
+
+ */
+	
+	public Coordinate getDisplaced(CardinalDirection direction, int displacement) {
+		return new Coordinate(this.x + (direction.getX() * displacement), this.y + (direction.getY() *displacement));
+	}
+	
+	public Coordinate[] getNeighbords(CardinalDirection direcion, int neighbors) {
+		Coordinate[] neighbordsArray = new Coordinate[neighbors];
+		for (int i = 1; i < neighbors; i++) {
+			neighbordsArray[i] = getDisplaced(direcion, i);
 		}
-
-		Coordinate[] neighbords = new Coordinate[neighbors * 2];
-		for (int = 1; i < neighbors; i++) {
-			neighbords[i] = getDisplacedHorizontal(i);
-			
-		}
+		return neighbordsArray;
 	}
 	
-	public Coordinate getDisplacedHorizontal(int displacement) {
-		return new Coordinate(this.x + displacement, this.y);
-	}
-
-	public Coordinate getDisplacedHorizontal() {
-		return getDisplacedHorizontal(1);
-	}
-
-	public Coordinate getDisplacedVertical(int displacement) {
-		return new Coordinate(this.x, this.y + displacement);
-	}
-
-	public Coordinate getDisplacedVertical() {
-		return getDisplacedVertical(1);
-	}
-	//
-
-	public Coordinate getDisplacedDiagonalSecondX(int displacement) {
-		return new Coordinate(this.x + displacement, this.y + displacement);
-	}
-	
-	public Coordinate getDisplacedDiagonalSecondY(int displacement) {
-		return new Coordinate(this.x - displacement, this.y - displacement);
-	}
-	
-	public Coordinate getDisplacedDiagonalX(int displacement) {
-		return new Coordinate(this.x + displacement, this.y - displacement);
-	}
-	
-	public Coordinate getDisplacedDiagonalY(int displacement) {
-		return new Coordinate(this.x - displacement, this.y + displacement);
-	}
-	
-	//
-	
-	public Coordinate getDisplacedHorizontal(int displacement) {
-		return new Coordinate(this.x + displacement, this.y);
-	}
-
-	public Coordinate getDisplacedHorizontal() {
-		return getDisplacedHorizontal(1);
-	}
-
-	public Coordinate getDisplacedVertical(int displacement) {
-		return new Coordinate(this.x, this.y + displacement);
-	}
-
-	public Coordinate getDisplacedVertical() {
-		return getDisplacedVertical(1);
-	}
-	
-	public Coordinate getDisplacedDiagonal(int displacement) {
-		return new Coordinate(this.x + displacement, this.y + displacement);
-	}
-	
-	public Coordinate getDisplacedDiagonalSup(int displacement) {
-		return new Coordinate(this.x + displacement, this.y + displacement);
-	}
-
-	public Coordinate getDisplacedDiagonal() {
-		return getDisplacedDiagonal(1);
-	}
-
-	public Coordinate getDisplacedDiagonalInv(int displacement) {
-		return new Coordinate(this.x - displacement, this.y + displacement);
-	}
-
-	public Coordinate getDisplacedDiagonalInv() {
-		return getDisplacedDiagonalInv(1);
-	}
-
 	public int getX() {
 		return this.x;
 	}
@@ -108,4 +48,27 @@ public class Coordinate {
 	public boolean inCuadrant(Coordinate coordinate) {
 		return coordinate.getX() >= this.x && coordinate.getX() <= this.y;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null || getClass() != obj.getClass()) {
+	      return false;
+	    }
+
+	    Coordinate coordinate = (Coordinate)obj;
+		return this.x == coordinate.getX() && this.y == coordinate.getY();
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + this.x;
+		result = prime * result + this.y;
+		return result;
+	}
+	
 }
