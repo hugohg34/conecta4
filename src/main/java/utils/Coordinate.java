@@ -31,7 +31,7 @@ public class Coordinate {
 	
 	public Coordinate[] getNeighbords(CardinalDirection direcion, int neighbors) {
 		Coordinate[] neighbordsArray = new Coordinate[neighbors];
-		for (int i = 1; i < neighbors; i++) {
+		for (int i = 0; i < neighbors; i++) {
 			neighbordsArray[i] = getDisplaced(direcion, i);
 		}
 		return neighbordsArray;
@@ -45,8 +45,10 @@ public class Coordinate {
 		return this.y;
 	}
 
-	public boolean inCuadrant(Coordinate coordinate) {
-		return coordinate.getX() >= this.x && coordinate.getX() <= this.y;
+	public boolean inCuadrant(Coordinate coordinate) {		
+		boolean a = coordinate.getX() >= this.x;
+		boolean b = coordinate.getX() <= this.y;
+		return a && b;
 	}
 	
 	@Override

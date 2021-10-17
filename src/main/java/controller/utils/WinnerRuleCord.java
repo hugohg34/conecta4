@@ -11,8 +11,8 @@ import utils.Coordinate;
 
 public class WinnerRuleCord {
 
-	protected Board board;
-	protected int goal = 4;
+	private Board board;
+	private static final int INLINE_TO_GOAL = 4;
 
 	public WinnerRuleCord(Board board) {
 		this.board = board;
@@ -21,7 +21,7 @@ public class WinnerRuleCord {
 	public boolean isFourInLine(DiscDrop discDrop) {
 		for (CardinalDirection direction : CardinalDirection.values()) {
 			List<DiscColor> neighbordDiscDrop = getNeighbordDiscDrop(discDrop, direction);
-			if (neighbordDiscDrop.size() == this.goal && isEqualColor(discDrop, neighbordDiscDrop)) {
+			if (neighbordDiscDrop.size() == INLINE_TO_GOAL - 1 && isEqualColor(discDrop, neighbordDiscDrop)) {
 				return true;
 			}
 		}
@@ -30,7 +30,7 @@ public class WinnerRuleCord {
 
 	public List<DiscColor> getNeighbordDiscDrop(DiscDrop discDrop, CardinalDirection direction) {
 		Coordinate discCoordinate = new Coordinate(discDrop.getColumn(), discDrop.getRow());
-		Coordinate[] coordinateList = discCoordinate.getNeighbords(direction, goal - 1);
+		Coordinate[] coordinateList = discCoordinate.getNeighbords(direction, INLINE_TO_GOAL - 1);
 		List<DiscColor> neighbordList = new ArrayList<>();
 		for (Coordinate coord : coordinateList) {
 			if (inBoardCuadrant(coord)) {

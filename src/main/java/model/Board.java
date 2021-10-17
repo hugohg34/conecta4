@@ -5,14 +5,13 @@ import java.util.List;
 
 import controller.utils.WinnerRuleCord;
 import types.DiscColor;
-import utils.Coordinate;
 
 public class Board {
 
 	public static final int COLUMNS = 7;
 	public static final int ROWS = 6;
 	private List<List<DiscDrop>> discDropList;
-	private Coordinate lastDiscDropCoordinate;
+	private DiscDrop lastDiscDrop;
 
 	public Board() {
 		initBoard();
@@ -26,8 +25,11 @@ public class Board {
 	}
 
 	public void dropping(DiscDrop discDrop) {
-		this.discDropList.get(discDrop.getColumn() - 1).add(discDrop);
-		this.lastDiscDropCoordinate = new Coordinate(discDrop.getColumn(), this.discDropList.size());
+		int columnIndex = discDrop.getColumn() - 1;
+		this.discDropList.get(columnIndex).add(discDrop);
+		discDrop.setRow(this.discDropList.get(columnIndex).size());
+		this.lastDiscDrop = discDrop;
+		System.out.println("Last drop color: " + discDrop.getColor() + " col: " + discDrop.getColumn() + " row: " + discDrop.getRow());
 	}
 
 	public DiscColor getDisc(int column, int row) {
@@ -68,8 +70,7 @@ public class Board {
 
 	public boolean isFourInLine() {
 		WinnerRuleCord winnerRule = new WinnerRuleCord(this);
-		return winnerRule.isFourInLine(this.lastDiscDropCoordinate);
-		
+		return winnerRule.isFourInLine(this.lastDiscDrop);
 	}
 
 }
