@@ -52,7 +52,7 @@ public class WinnerRuleCord {
 	private boolean inBoardCuadrant(Coordinate coordinate) {
 		Coordinate columBoardCord = new Coordinate(1, Board.COLUMNS);
 		Coordinate rowBoardCord = new Coordinate(1, Board.ROWS);
-		return columBoardCord.inCuadrant(coordinate) && rowBoardCord.inCuadrant(coordinate);
+		return coordinate.between(rowBoardCord, columBoardCord);
 	}
 
 }

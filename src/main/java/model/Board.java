@@ -29,7 +29,6 @@ public class Board {
 		this.discDropList.get(columnIndex).add(discDrop);
 		discDrop.setRow(this.discDropList.get(columnIndex).size());
 		this.lastDiscDrop = discDrop;
-		System.out.println("Last drop color: " + discDrop.getColor() + " col: " + discDrop.getColumn() + " row: " + discDrop.getRow());
 	}
 
 	public DiscColor getDisc(int column, int row) {
