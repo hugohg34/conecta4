@@ -14,7 +14,7 @@ public class WinnerRuleCord {
 	protected Board board;
 	protected int goal = 4;
 
-	protected WinnerRuleCord(Board board) {
+	public WinnerRuleCord(Board board) {
 		this.board = board;
 	}
 

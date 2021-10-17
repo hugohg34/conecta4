@@ -3,13 +3,16 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.utils.WinnerRuleCord;
 import types.DiscColor;
+import utils.Coordinate;
 
 public class Board {
 
 	public static final int COLUMNS = 7;
 	public static final int ROWS = 6;
-	List<List<DiscDrop>> discDropList;
+	private List<List<DiscDrop>> discDropList;
+	private Coordinate lastDiscDropCoordinate;
 
 	public Board() {
 		initBoard();
@@ -24,6 +27,7 @@ public class Board {
 
 	public void dropping(DiscDrop discDrop) {
 		this.discDropList.get(discDrop.getColumn() - 1).add(discDrop);
+		this.lastDiscDropCoordinate = new Coordinate(discDrop.getColumn(), this.discDropList.size());
 	}
 
 	public DiscColor getDisc(int column, int row) {
@@ -60,6 +64,12 @@ public class Board {
 	private boolean isFullColumn(int columnIndex) {
 		int columIndex = columnIndex;
 		return this.discDropList.get(columIndex).size() >= ROWS;
+	}
+
+	public boolean isFourInLine() {
+		WinnerRuleCord winnerRule = new WinnerRuleCord(this);
+		return winnerRule.isFourInLine(this.lastDiscDropCoordinate);
+		
 	}
 
 }

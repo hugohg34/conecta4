@@ -1,6 +1,5 @@
 package controller;
 
-import controller.utils.WinnerChecker;
 import model.Board;
 import model.DiscDrop;
 import types.DiscColor;
@@ -14,13 +13,11 @@ public class PlayController {
 	private BoardView boardView;
 	private Board board;
 	private DiscDropView discDropView;
-	private WinnerChecker winnerChecker;
 
 	public PlayController(ViewFactory viewFactory) {
 		this.boardView = viewFactory.getBoardView();
 		this.discDropView = new ConsoleDiscDropView();
 		this.board = new Board();
-		this.winnerChecker = new WinnerChecker(this.board);
 		this.boardView.setBoard(this.board);
 	}
 
@@ -43,7 +40,7 @@ public class PlayController {
 	}
 
 	public boolean isWinnerPlay() {
-		return this.winnerChecker.check();
+		return this.board.isFourInLine();
 	}
 
 }

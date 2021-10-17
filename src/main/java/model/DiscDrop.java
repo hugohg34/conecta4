@@ -23,9 +23,4 @@ public class DiscDrop {
 	public void setRow(int row) {
 		this.row = row;
 	}
-
-	public int getRow() {
-		return this.row;
-	}
-
 }
