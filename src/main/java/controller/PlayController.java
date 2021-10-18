@@ -2,45 +2,44 @@ package controller;
 
 import model.Board;
 import model.DiscDrop;
+import model.Game;
+import model.State;
 import types.DiscColor;
-import view.BoardView;
-import view.DiscDropView;
-import view.ViewFactory;
-import view.console.ConsoleDiscDropView;
 
-public class PlayController {
-
-	private BoardView boardView;
-	private Board board;
-	private DiscDropView discDropView;
-
-	public PlayController(ViewFactory viewFactory) {
-		this.boardView = viewFactory.getBoardView();
-		this.discDropView = new ConsoleDiscDropView();
-		this.board = new Board();
-		this.boardView.setBoard(this.board);
-	}
-
-	public void play(DiscColor color) {
-		this.boardView.show();
-		DiscDrop discDrop;
-		boolean validDropping;
-		do {
-			discDrop = this.discDropView.read(color);
-			validDropping = this.board.isValidDropping(discDrop);
-			if (!validDropping) {
-				this.discDropView.showInvaidDropping();
-			}
-		} while (!validDropping);
-		this.board.dropping(discDrop);
+public class PlayController extends BaseController {
+	
+	public PlayController(Game game, State state) {
+		super(game, state);
 	}
 
 	public boolean isEndGame() {
-		return this.board.isFull() || isWinnerPlay();
+		return this.game.isFull() || isWinnerPlay();
 	}
 
 	public boolean isWinnerPlay() {
-		return this.board.isFourInLine();
+		return this.game.isFourInLine();
+	}
+
+	public Board getBoard() {
+		return this.game.getBoard();
+	}
+
+	public DiscColor getColor() {
+		return this.game.getColor();
+	}
+
+	public boolean isValidDropping(DiscDrop discDrop) {
+		return this.game.isValidDropping(discDrop);
+	}
+
+	public void dropping(DiscDrop discDrop) {
+		this.game.dropping(discDrop);
+	}
+
+	@Override
+	public void accept(ControllersVisitor controllersVisitor) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

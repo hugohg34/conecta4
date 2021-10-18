@@ -13,10 +13,10 @@ public class Board {
 	private DiscDrop lastDiscDrop;
 
 	public Board() {
-		initBoard();
+		reset();
 	}
 
-	private void initBoard() {
+	public void reset() {
 		this.discDropList = new ArrayList<>();
 		for (int i = 0; i < COLUMNS; i++) {
 			this.discDropList.add(new ArrayList<>());
