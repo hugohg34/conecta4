@@ -1,13 +1,12 @@
 package controller;
 
-import model.Board;
 import model.DiscDrop;
 import model.Game;
 import model.State;
 import types.DiscColor;
 
 public class PlayController extends BaseController {
-	
+
 	public PlayController(Game game, State state) {
 		super(game, state);
 	}
@@ -20,26 +19,27 @@ public class PlayController extends BaseController {
 		return this.game.isFourInLine();
 	}
 
-	public Board getBoard() {
-		return this.game.getBoard();
+	public DiscColor currentDiscColor(int col, int row) {
+		return this.game.getDiscColor(col, row);
 	}
 
-	public DiscColor getColor() {
-		return this.game.getColor();
+	public DiscColor getDiscColor(int col, int row) {
+		return this.game.getDiscColor(col, row);
 	}
 
-	public boolean isValidDropping(DiscDrop discDrop) {
+	public boolean isValidDropping(int col) {
+		DiscDrop discDrop = new DiscDrop(this.game.getCurrentDiscColor(), col);
 		return this.game.isValidDropping(discDrop);
 	}
 
-	public void dropping(DiscDrop discDrop) {
+	public void dropping(int col) {
+		DiscDrop discDrop = new DiscDrop(this.game.getCurrentDiscColor(), col);
 		this.game.dropping(discDrop);
 	}
 
 	@Override
 	public void accept(ControllersVisitor controllersVisitor) {
-		// TODO Auto-generated method stub
-		
+		controllersVisitor.visit(this);
 	}
 
 }

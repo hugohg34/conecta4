@@ -3,9 +3,11 @@ package view.console;
 import controller.PlayController;
 import model.DiscDrop;
 import view.BoardView;
+import view.PlayView;
 
-public class ConsolePlayView {
+public class ConsolePlayView implements PlayView {
 	
+	@Override
 	public void interact(PlayController playController) {
 		BoardView boardView = new ConsoleBoardView();
 		boardView.setBoard(playController.getBoard());

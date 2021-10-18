@@ -1,20 +1,15 @@
 package view;
 
+import controller.StartController;
+
 public abstract class ViewFactory {
-	protected BoardView boardView;
-	protected WinnerView winnerView;
-	protected EndGameView endGameView;
+	
+	protected StartView startView;
+	protected PlayView playView;
+	protected ResumeView resumeView;
 
-	public BoardView getBoardView() {
-		return this.boardView;
-	}
-
-	public WinnerView getWinnerView() {
-		return this.winnerView;
-	}
-
-	public EndGameView getEndGameView() {
-		return this.endGameView;
+	public void visit(StartController startController) {
+		this.startView.interact(startController);
 	}
 
 }

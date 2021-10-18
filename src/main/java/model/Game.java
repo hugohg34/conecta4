@@ -7,7 +7,8 @@ public class Game {
 	private Turn turn;
 	
 	public Game() {
-		this.board = new Board();	
+		this.board = new Board();
+		this.turn = new Turn();
 	}
 
 	public boolean isFull() {
@@ -18,12 +19,12 @@ public class Game {
 		return this.board.isFourInLine();
 	}
 
-	public Board getBoard() {
-		return this.board;
-	}
-
-	public DiscColor getColor() {
+	public DiscColor getCurrentDiscColor() {
 		return this.turn.getColor();
+	}
+	
+	public DiscColor getDiscColor(int col, int row) {
+		return this.board.getDisc(col, row);
 	}
 
 	public boolean isValidDropping(DiscDrop discDrop) {
