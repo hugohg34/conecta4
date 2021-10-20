@@ -9,9 +9,9 @@ public class StartController extends BaseController {
 		super(game, state);
 	}
 
-	 @Override
-	    public void accept(ControllersVisitor controllersVisitor) {
-	        controllersVisitor.visit(this);
-	    }
+	@Override
+	public void accept(ControllersVisitor controllersVisitor) {
+		controllersVisitor.visit(this);
+	}
 
 }

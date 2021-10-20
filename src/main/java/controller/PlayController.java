@@ -10,6 +10,10 @@ public class PlayController extends BaseController {
 	public PlayController(Game game, State state) {
 		super(game, state);
 	}
+	
+	public void nextTurn() {
+		game.nextTurn();
+	}
 
 	public boolean isEndGame() {
 		return this.game.isFull() || isWinnerPlay();
@@ -19,21 +23,19 @@ public class PlayController extends BaseController {
 		return this.game.isFourInLine();
 	}
 
-	public DiscColor currentDiscColor(int col, int row) {
-		return this.game.getDiscColor(col, row);
+	public DiscColor currentDiscColor() {
+		return this.game.getCurrentDiscColor();
 	}
 
 	public DiscColor getDiscColor(int col, int row) {
 		return this.game.getDiscColor(col, row);
 	}
 
-	public boolean isValidDropping(int col) {
-		DiscDrop discDrop = new DiscDrop(this.game.getCurrentDiscColor(), col);
+	public boolean isValidDropping(DiscDrop discDrop) {
 		return this.game.isValidDropping(discDrop);
 	}
 
-	public void dropping(int col) {
-		DiscDrop discDrop = new DiscDrop(this.game.getCurrentDiscColor(), col);
+	public void dropping(DiscDrop discDrop) {
 		this.game.dropping(discDrop);
 	}
 

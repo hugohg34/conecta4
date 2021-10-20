@@ -17,7 +17,7 @@ public class Turn {
 		return this.players[this.currentPlayer];
 	}
 	
-	public void change() {
+	public void next() {
 		this.currentPlayer = (this.currentPlayer + 1)  % this.players.length;
 	}
 

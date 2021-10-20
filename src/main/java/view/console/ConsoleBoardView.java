@@ -3,25 +3,23 @@ package view.console;
 import controller.PlayController;
 import model.Board;
 import utils.Console;
-import view.BoardView;
 
-public class ConsoleBoardView implements BoardView {
+public class ConsoleBoardView {
 
 	private PlayController playController;
 	private Console console = Console.getInstance();
 	private String cellFormat = "| %s |";
 	String separator = String.format("|%33s|", "").replace(" ", "-");
-	
+
 	public ConsoleBoardView(PlayController playController) {
 		this.playController = playController;
 	}
 
-	@Override
-	public void show() {	
+	public void show() {
 		printHeader();
 		printBody();
 		printFooter(separator);
-		
+
 	}
 
 	private void printBody() {
@@ -48,5 +46,5 @@ public class ConsoleBoardView implements BoardView {
 		this.console.println(String.format("|%14s%s%14s|", "", "BOARD", ""));
 		this.console.println(separator);
 	}
-	
+
 }

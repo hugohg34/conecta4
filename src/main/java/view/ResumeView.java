@@ -1,7 +1,9 @@
 package view;
 
+import controller.ResumeController;
+
 public interface ResumeView {
 
-	public void interact();
+	void interact(ResumeController resumeController);
 	
 }

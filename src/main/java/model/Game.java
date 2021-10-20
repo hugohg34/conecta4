@@ -10,6 +10,14 @@ public class Game {
 		this.board = new Board();
 		this.turn = new Turn();
 	}
+	
+	public DiscColor getCurrentDiscColor() {
+		return this.turn.getColor();
+	}
+	
+	public void nextTurn() {
+		this.turn.next();
+	}
 
 	public boolean isFull() {
 		return this.board.isFull();
@@ -17,10 +25,6 @@ public class Game {
 
 	public boolean isFourInLine() {
 		return this.board.isFourInLine();
-	}
-
-	public DiscColor getCurrentDiscColor() {
-		return this.turn.getColor();
 	}
 	
 	public DiscColor getDiscColor(int col, int row) {
@@ -40,7 +44,7 @@ public class Game {
 	}
 
 	public void next() {
-		this.turn.change();
+		this.turn.next();
 	}
 
 }

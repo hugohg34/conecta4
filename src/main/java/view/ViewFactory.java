@@ -1,15 +1,11 @@
 package view;
 
-import controller.StartController;
+import controller.ControllersVisitor;
 
-public abstract class ViewFactory {
+public abstract class ViewFactory implements ControllersVisitor{
 	
 	protected StartView startView;
 	protected PlayView playView;
 	protected ResumeView resumeView;
-
-	public void visit(StartController startController) {
-		this.startView.interact(startController);
-	}
 
 }
