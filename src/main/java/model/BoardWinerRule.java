@@ -18,15 +18,15 @@ public class BoardWinerRule {
 
 	public boolean isFourInLine(DiscDrop discDrop) {
 		for (CardinalDirection direction : CardinalDirection.values()) {
-			List<DiscColor> neighbordDiscDrop = getNeighbordDiscDrop(discDrop, direction);
-			if (neighbordDiscDrop.size() == INLINE_TO_GOAL - 1 && isEqualColor(discDrop, neighbordDiscDrop)) {
+			List<DiscColor> neighbordDiscColorList = getNeighbordDiscColor(discDrop, direction);
+			if (neighbordDiscColorList.size() == INLINE_TO_GOAL - 1 && isEqualColor(discDrop, neighbordDiscColorList)) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public List<DiscColor> getNeighbordDiscDrop(DiscDrop discDrop, CardinalDirection direction) {
+	private List<DiscColor> getNeighbordDiscColor(DiscDrop discDrop, CardinalDirection direction) {
 		Coordinate discCoordinate = new Coordinate(discDrop.getColumn(), discDrop.getRow());
 		Coordinate[] coordinateList = discCoordinate.getNeighbords(direction, INLINE_TO_GOAL - 1);
 		List<DiscColor> neighbordList = new ArrayList<>();
