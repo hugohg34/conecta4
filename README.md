@@ -2,12 +2,17 @@
 
 **Asignatura Diseño y calidad software**
 
-Práctica 1
+Práctica 1 v2 - No evaluable.
 
 Tema 2 - Disciplina de diseño software
 
-+ **Autor**: Víctor Hugo Vallejos Chacón
-+ **Autoevaluación**: 9,0
+
+## Cambios
+- Implementación de lógica.
+- Cambio de arquitectura de MVC - Pasive view | MVP - Presentador supervisor.
+- Optimización de algoritmo conecta4. Solamente busca vecinos del último movimiento.
+- El Board se muestra con número de columna.
+- Limpieza de la casa.
 
 ## Rules
 * [Wikipedia](https://en.wikipedia.org/wiki/Connect_Four)
