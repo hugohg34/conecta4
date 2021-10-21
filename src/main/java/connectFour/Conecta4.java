@@ -1,4 +1,4 @@
-package connect4;
+package connectFour;
 
 import controller.BaseController;
 import controller.Logic;
