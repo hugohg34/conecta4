@@ -31,11 +31,11 @@ public class Console {
 	}
 
 	public void print(String string) {
-		System.out.print(string);
+		System.out.print(string); // NOSONAR
 	}
 
 	public void println(String string) {
-		System.out.println(string);
+		System.out.println(string); // NOSONAR
 	}
 
 	private void inputFormatError(String string) {
@@ -43,7 +43,7 @@ public class Console {
 	}
 
 	public void printError(String string) {
-		System.err.println(string);
+		System.err.println(string); // NOSONAR
 	}
 
 	public int readInt(String label) {
