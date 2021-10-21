@@ -1,32 +1,28 @@
 package view.console;
 
-import controller.PlayController;
+import controller.BaseController;
 import model.Board;
 import utils.Console;
 
 public class ConsoleBoardView {
 
-	private PlayController playController;
+	private static final String HEADER_TITLE = String.format("|%14s%s%14s|", "", "BOARD", "");
+	private static final String SEPARATOR = "|---------------------------------|";
+	private static final String CELLFORMAT = "| %s |";
 	private Console console = Console.getInstance();
-	private String cellFormat = "| %s |";
-	String separator = String.format("|%33s|", "").replace(" ", "-");
 
-	public ConsoleBoardView(PlayController playController) {
-		this.playController = playController;
-	}
-
-	public void show() {
+	public void show(BaseController baseController) {
 		printHeader();
-		printBody();
-		printFooter(separator);
+		printBody(baseController);
+		printFooter(SEPARATOR);
 
 	}
 
-	private void printBody() {
+	private void printBody(BaseController baseController) {
 		for (int row = Board.ROWS; row > 0; row--) {
 			for (int column = 1; column <= Board.COLUMNS; column++) {
-				char discChar = this.playController.getDiscColor(column, row).getChar();
-				this.console.print(String.format(cellFormat, discChar));
+				char discChar = baseController.getDiscColor(column, row).getChar();
+				this.console.print(String.format(CELLFORMAT, discChar));
 			}
 			console.println("");
 		}
@@ -35,16 +31,16 @@ public class ConsoleBoardView {
 	private void printFooter(String separator) {
 		console.println(separator);
 		for (int column = 1; column <= Board.COLUMNS; column++) {
-			this.console.print(String.format(cellFormat, column));
+			this.console.print(String.format(CELLFORMAT, column));
 		}
 		console.println("");
 		console.println(separator);
 	}
 
 	private void printHeader() {
-		this.console.println(separator);
-		this.console.println(String.format("|%14s%s%14s|", "", "BOARD", ""));
-		this.console.println(separator);
+		this.console.println(SEPARATOR);
+		this.console.println(HEADER_TITLE);
+		this.console.println(SEPARATOR);
 	}
 
 }

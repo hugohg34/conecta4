@@ -3,7 +3,6 @@ package view.console;
 import controller.PlayController;
 import controller.ResumeController;
 import controller.StartController;
-import view.PlayView;
 import view.ViewFactory;
 
 public class ConsoleViewFactory extends ViewFactory {

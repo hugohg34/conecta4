@@ -5,7 +5,7 @@ import model.DiscDrop;
 import view.PlayView;
 
 public class ConsolePlayView implements PlayView {
-	
+
 	@Override
 	public void interact(PlayController playController) {
 		DiscDrop discDrop;
@@ -13,7 +13,8 @@ public class ConsolePlayView implements PlayView {
 			discDrop = new ConsolePlayerDiscDropView().read(playController);
 			playController.dropping(discDrop);
 			playController.nextTurn();
-		} while (playController.isEndGame());
+			new ConsoleBoardView().show(playController);
+		} while (!playController.isEndGame());
 		playController.nextState();
 	}
 

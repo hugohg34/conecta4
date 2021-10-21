@@ -27,10 +27,6 @@ public class PlayController extends BaseController {
 		return this.game.getCurrentDiscColor();
 	}
 
-	public DiscColor getDiscColor(int col, int row) {
-		return this.game.getDiscColor(col, row);
-	}
-
 	public boolean isValidDropping(DiscDrop discDrop) {
 		return this.game.isValidDropping(discDrop);
 	}

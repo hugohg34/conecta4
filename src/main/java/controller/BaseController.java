@@ -2,6 +2,7 @@ package controller;
 
 import model.Game;
 import model.State;
+import types.DiscColor;
 
 public abstract class BaseController {
 	
@@ -18,4 +19,8 @@ public abstract class BaseController {
     }
 
     public abstract void accept(ControllersVisitor controllersVisitor);
+
+	public DiscColor getDiscColor(int col, int row) {
+		return this.game.getDiscColor(col, row);
+	}
 }

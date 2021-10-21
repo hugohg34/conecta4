@@ -1,6 +1,6 @@
 package controller;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import model.Game;
@@ -16,7 +16,7 @@ public class Logic {
 	public Logic() {
 		this.game = new Game();
 		this.state = new State();
-		this.controllers = new HashMap<>();
+		this.controllers = new EnumMap<> (StateValue.class);
 		this.controllers.put(StateValue.INITIAL, new StartController(this.game, this.state));
 		this.controllers.put(StateValue.IN_GAME, new PlayController(this.game, this.state));
 		this.controllers.put(StateValue.RESUME, new ResumeController(this.game, this.state));
