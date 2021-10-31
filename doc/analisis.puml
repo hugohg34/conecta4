@@ -1,0 +1,71 @@
+@startuml
+
+Title "Modelo/Vista/Presentador con Vista Pasiva"
+
+abstract class ViewFactory
+abstract class Connect4{
+	Session
+	ViewFactory
+	StartController
+	PlayController
+	ResumeController
+	play()
+}
+
+class ConsoleConnect4 {
+	createView(): ConsoleViewFactory
+}
+
+abstract class Controller{
+}
+abstract class CommandController {
+	title: String
+	control()
+	isActive()
+	getTitle()
+}
+
+class Session {
+	Session
+	ViewFactory
+}
+
+class PlayController <<Composite>> {
+	control()
+	-menu()
+}
+
+abstract class CompositeController {
+	componentControllers: List
+	createComponentControllers()
+	
+}
+
+class ViewFactory <<Abstract Factory>> {
+		createBoardView()
+	    createMenuView()
+	    createPlayerView()
+	    createResumeView()
+	    createStartView()
+	    createErrorView()
+		createMessageView()
+}
+class ConsoleViewFactory <<Concrecte Factory>>
+
+Connect4 <|-- ConsoleConnect4
+Connect4 *--> Controller
+Controller o--> Session
+Controller o--> ViewFactory
+CompositeController <|-- PlayController
+Controller <|-- CompositeController 
+Controller <|-- CommandController
+PlayController *--> "3" CommandController
+ViewFactory <|-- ConsoleViewFactory
+ConsoleConnect4 *--> ConsoleViewFactory 
+ConsoleViewFactory ..> MenuConsoleView 
+
+
+note bottom of [ViewFactory]: Patron Abstract Factory\n\n interfaz para crear familias de objetos relacionados o dependientes entre si, sin tener que especificar su clase concreta"
+
+
+@enduml
