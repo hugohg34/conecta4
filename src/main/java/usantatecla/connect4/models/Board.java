@@ -24,7 +24,7 @@ public class Board {
 		}
 	}
 
-	void putToken(int column, Color color) {
+	public void putToken(int column, Color color) {
 		ConcreteCoordinate coordinate = this.getEmptyCoordinate(column);
 		this.colors[coordinate.getRow()][coordinate.getColumn()] = color;
 	}
