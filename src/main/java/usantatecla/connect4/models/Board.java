@@ -11,7 +11,7 @@ public class Board {
 
 	private Color[][] colors;
 
-	Board() {
+	public Board() {
 		this.colors = new Color[Board.ROWS][Board.COLUMNS];
 		this.reset();
 	}
