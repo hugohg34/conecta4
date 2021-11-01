@@ -7,23 +7,29 @@ public class BoardSimpleBuilder extends BoardBuilder {
 	public BoardSimpleBuilder() {
 		super();
 		this.boardStringMap.put("FULL",
-				"RYRYRYR" +
+				"RYRYRYR" + 
 				"RYRYRYR" +
 				"YRYRYRY" +
 				"YRYRYRY" +
 				"RYRYRYR" +
 				"RYRYRYR");
 	}
-	
+
 	public BoardSimpleBuilder fullBoard() {
 		this.board = boardFromString(this.boardStringMap.get("FULL"));
 		return this;
 	}
 	
+	public BoardSimpleBuilder formString(String string) {
+		this.board = boardFromString(string);
+		return this;
+	}
+
 	public BoardSimpleBuilder enpty() {
 		this.board.reset();
 		return this;
 	}
+
 	@Override
 	public Board buid() {
 		return this.board;

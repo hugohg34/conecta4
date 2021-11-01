@@ -55,6 +55,13 @@ class BoardTest {
 		ConcreteCoordinate cordinate = new ConcreteCoordinate(0, 0);
 		assertEquals(Color.RED, this.board.getColor(cordinate));
 	}
+	
+	@Test
+	void giveBoardFromCharArray_whenToCharArray_thenIsEqualCharArray() {
+		String boardString = "RRRRRRRYYYYYYYRRRRRRRYYYYYYYRRRRRRRYYYYYYY";
+		char[] boardToChar = new BoardSimpleBuilder().formString(boardString).buid().toCharacterArray();
+		assertEquals(boardString, new String(boardToChar));
+	}
 
 	@Test
 	void givenPutTokenInEmptyColumn_whenColumIsOccupiedEqualCOlor_thenTrue() {
