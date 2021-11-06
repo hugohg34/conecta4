@@ -23,7 +23,7 @@ public class ActionCommand extends CommandController {
 		Error error;
 		PlayerView view = viewFactory.createPlayerView();
 		do {
-			column = view.readColum();
+			column = view.readColum() -1;
 			error = this.getPutTokenError(column);
 		} while (!error.isNull());
 		this.putToken(column);
