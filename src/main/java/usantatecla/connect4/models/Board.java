@@ -1,5 +1,7 @@
 package usantatecla.connect4.models;
 
+import java.util.Arrays;
+
 import usantatecla.utils.models.Color;
 import usantatecla.utils.models.ConcreteCoordinate;
 import usantatecla.utils.models.Direction;
@@ -111,6 +113,36 @@ public class Board {
 
 	public Color[][] getColors() {
 		return colors;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Board other = (Board) obj;
+		for (int i = 0; i < Board.ROWS; i++) {
+			for (int j = 0; j < Board.COLUMNS; j++) {
+				if (this.colors[i][j] != other.colors[i][j]) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(this.colors);
+		return result;
 	}
 
 }
