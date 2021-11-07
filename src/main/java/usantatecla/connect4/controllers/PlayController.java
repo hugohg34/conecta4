@@ -33,17 +33,22 @@ public class PlayController extends CompositeController {
 	}
 
 	public void menu() {
-		List<CommandController> commandsMenu = componentControllers.stream().map(CommandController.class::cast)
-				.filter(CommandController::isActive).collect(Collectors.toList());
-
-		assert !commandsMenu.isEmpty();
+		List<CommandController> activeCommandsMenu = getActiveCommands();
+		assert !activeCommandsMenu.isEmpty();
 		int option;
 		do {
-			writeMenu(commandsMenu);
+			writeMenu(activeCommandsMenu);
 			option = menuView.readOption() - 1;
-		} while (!new ClosedInterval(0, commandsMenu.size() - 1).isIncluded(option));
-		commandsMenu.get(option).control();
+		} while (!new ClosedInterval(0, activeCommandsMenu.size() - 1).isIncluded(option));
+		activeCommandsMenu.get(option).control();
 		writeBoard();
+	}
+
+	private List<CommandController> getActiveCommands() {
+		return componentControllers.stream()
+				.map(CommandController.class::cast)
+				.filter(CommandController::isActive)
+				.collect(Collectors.toList());
 	}
 
 	private boolean isConnect4() {
