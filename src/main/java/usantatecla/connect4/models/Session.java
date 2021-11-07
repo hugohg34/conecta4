@@ -19,11 +19,11 @@ public class Session {
 	}
 
 	public boolean undoable() {
-		return this.registry.undoable();
+		return this.registry.isUndoable();
 	}
 
 	public boolean redoable() {
-		return this.registry.redoable();
+		return this.registry.isRedoable();
 	}
 
 	public void undo() {

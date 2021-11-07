@@ -29,24 +29,24 @@ class Registry {
 	}
 
 	void undo() {
-		assert this.undoable();
+		assert this.isUndoable();
 
 		this.firstPrevious++;
 		this.game.setMemento(this.mementos.get(this.firstPrevious));
 	}
 
 	void redo() {
-		assert this.redoable();
+		assert this.isRedoable();
 
 		this.firstPrevious--;
 		this.game.setMemento(this.mementos.get(this.firstPrevious));
 	}
 
-	boolean undoable() {
+	boolean isUndoable() {
 		return this.firstPrevious < this.mementos.size() - 1;
 	}
 
-	boolean redoable() {
+	boolean isRedoable() {
 		return this.firstPrevious >= 1;
 	}
 
