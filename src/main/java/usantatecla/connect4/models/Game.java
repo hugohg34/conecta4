@@ -50,9 +50,6 @@ public class Game {
 		this.board = memento.getBoard();
 		this.turn = new Turn(this.board);
 		this.turn.setActivePlayer(memento.getActivePlayer());
-		for (Color color : Color.getAll()) {
-			this.turn.setPlayerPutTokens(color, memento.getPlayerPutTokens(color));
-		}
 	}
 
 	@Override
