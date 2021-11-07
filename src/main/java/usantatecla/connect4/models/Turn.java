@@ -49,4 +49,27 @@ public class Turn {
 		return this.getActivePlayer().getPutTokenError(column);
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Turn other = (Turn) obj;
+		return this.activePlayer == other.activePlayer && this.board.equals(other.board);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1 + activePlayer;
+		result = prime * result + board.hashCode();
+		return result;
+	}
+
 }

@@ -61,15 +61,16 @@ public class Game {
 		if (getClass() != obj.getClass())
 			return false;
 		Game other = (Game) obj;
-		if (board == null) {
-			if (other.board != null)
-				return false;
-		} else if (!board.equals(other.board))
-			return false;
-		if (turn == null) {
-			return other.turn == null;
-		} else
-			return turn.equals(other.turn);
+		boolean result = this.turn.equals(other.turn);
+		return result;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + turn.hashCode();
+		return result;
 	}
 
 }
