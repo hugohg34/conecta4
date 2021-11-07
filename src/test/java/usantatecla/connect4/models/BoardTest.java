@@ -1,6 +1,5 @@
 package usantatecla.connect4.models;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -20,24 +19,49 @@ class BoardTest {
 		this.board = new BoardSimpleBuilder().enpty().buid();
 	}
 
+	/*
+	 * Equivalence Class
+	 * For Column:
+	 * null, ... -1 [0,...6] 7, ...
+	 * 
+	 */
+	
 	@Test
-	void givenNullColor_whenPutToken_thenAssertionError() {
-		assertThrows(NullPointerException.class, () -> {
+	void testGivenEmptyBoard_when_PutTokenNullColor_thenAssertionError() {
+		assertThrows(AssertionError.class, () -> {
 			this.board.putToken(1, null);
 		});
 	}
-
+	
 	@Test
-	void givenColumnOutOfBoard_whenPutToken_thenArrayIndexOutOfBoundsException() {
-		assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-			this.board.putToken(Board.COLUMNS + 1, Color.RED);
-		});
-	}
-
-	@Test
-	void givenColumnNegativeValue_whenPutToken_thenArrayIndexOutOfBoundsException() {
+	void testGivenEmptyBoard_whenPutTokenOutsideLeftColumn_thenArrayIndexOutOfBoundsException() {
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
 			this.board.putToken(-1, Color.RED);
+		});
+	}
+	
+	@Test
+	void testGivenEmptyBoard_whenPutTokenInsideLeftColumn_thenGetColorIsEqual() {
+		Color color = Color.RED;
+		int column = 0;
+		this.board.putToken(column, color);
+		ConcreteCoordinate coordinate = new ConcreteCoordinate(0, column);
+		assertEquals(color, this.board.getColor(coordinate));
+	}
+	
+	@Test
+	void testGivenEmptyBoard_whenPutTokenInsideRightColumn_thenGetColorIsEqual() {
+		Color color = Color.YELLOW;
+		int column = Board.COLUMNS -1;
+		this.board.putToken(column, color);
+		ConcreteCoordinate coordinate = new ConcreteCoordinate(0, column);
+		assertEquals(color, this.board.getColor(coordinate));
+	}
+	
+	@Test
+	void testGivenEmptyBoard_whenPutTokenOutsideRigtColumn_thenArrayIndexOutOfBoundsException() {
+		assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+			this.board.putToken(Board.COLUMNS, Color.RED);
 		});
 	}
 
@@ -49,34 +73,14 @@ class BoardTest {
 		});
 	}
 
-	@Test
-	void givenPutTokenRed_whenGetColorInCordinate_thenIsEqualColor() {
-		this.board.putToken(0, Color.RED);
-		ConcreteCoordinate cordinate = new ConcreteCoordinate(0, 0);
-		assertEquals(Color.RED, this.board.getColor(cordinate));
-	}
+
 	
 	@Test
-	void giveBoardFromCharArray_whenToCharArray_thenIsEqualCharArray() {
+	void testGiveBoardFromCharArray_whenToCharArray_thenIsEqualCharArray() {
 		String boardFromStr = "RRRRRRRYYYYYYYRRRRRRRYYYYYYYRRRRRRRYYYYYYY";
 		Board board = new BoardSimpleBuilder().formString(boardFromStr).buid();
 		String boardToStr = new String (board.toCharacterArray());
 		assertEquals(boardFromStr, boardToStr);
-	}
-
-	@Test
-	void givenPutTokenInEmptyColumn_whenColumIsOccupiedEqualCOlor_thenTrue() {
-		ConcreteCoordinate coordinatePut = new ConcreteCoordinate(row(0), col(0));
-		this.board.putToken(coordinatePut.getColumn(), Color.RED);
-		assertTrue(this.board.isOccupied(coordinatePut, Color.RED));
-	}
-
-	private int row(int row) {
-		return row;
-	}
-
-	private int col(int col) {
-		return col;
 	}
 
 }
