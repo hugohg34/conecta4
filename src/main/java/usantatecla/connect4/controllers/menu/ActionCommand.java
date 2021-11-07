@@ -13,34 +13,22 @@ public class ActionCommand extends CommandController {
 		this.title = Message.ACTION_COMMAND.toString();
 	}
 
-	public void next() {
-		this.session.next();
-	}
-
 	@Override
 	public void control() {
 		int column;
 		Error error;
 		PlayerView view = viewFactory.createPlayerView();
 		do {
-			column = view.readColum() -1;
-			error = this.getPutTokenError(column);
+			column = view.readColum() - 1;
+			error = this.session.getPutTokenError(column);
 		} while (!error.isNull());
-		this.putToken(column);
+		this.session.putToken(column);
 		this.session.next();
 	}
 
 	@Override
 	public boolean isActive() {
 		return true;
-	}
-
-	void putToken(int column) {
-		this.session.putToken(column);
-	}
-
-	Error getPutTokenError(int column) {
-		return this.session.getPutTokenError(column);
 	}
 
 }
