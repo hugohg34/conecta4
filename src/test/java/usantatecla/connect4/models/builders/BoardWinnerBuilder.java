@@ -57,8 +57,10 @@ public class BoardWinnerBuilder extends BoardBuilder {
 
 	@Override
 	public Board buid() {
-		String replacedWinnerBoard = this.boardStringMap.get(this.direction.toString()).replace(replaceChar, winnerChar);
+		String replacedWinnerBoard = this.boardStringMap.get(this.direction.toString()).replace(replaceChar,
+				winnerChar);
 		boardFromString(replacedWinnerBoard);
+
 		return this.board;
 	}
 
