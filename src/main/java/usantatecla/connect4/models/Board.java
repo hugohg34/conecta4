@@ -10,6 +10,7 @@ public class Board {
 
 	public static final int ROWS = 6;
 	public static final int COLUMNS = 7;
+	public static final int GOALS_IN_DIRECTION = 4;
 
 	private Color[][] colors;
 
@@ -77,10 +78,9 @@ public class Board {
 		return false;
 	}
 
-	boolean isConnect4(ConcreteCoordinate coordinate) {
-		for (Direction direction : new Direction[] { Direction.EAST, Direction.SOUTH_EAST, Direction.SOUTH,
-				Direction.SOUTH_WEST }) {
-			if (this.isConnect4(coordinate, direction)) {
+	boolean isConnect4(ConcreteCoordinate coordinate) {	
+		for (Direction direction : Direction.values()) {
+			if (direction != Direction.NULL && isConnect4(coordinate, direction)) {
 				return true;
 			}
 		}
@@ -91,7 +91,7 @@ public class Board {
 		assert !direction.isNull();
 		assert this.isValid(coordinate);
 
-		ConcreteCoordinate[] coordinates = coordinate.getInDirectionCoordinates(direction, 4);
+		ConcreteCoordinate[] coordinates = coordinate.getInDirectionCoordinates(direction, GOALS_IN_DIRECTION);
 		for (int i = 0; i < coordinates.length - 1; i++) {
 			if (!this.isValid(coordinates[i]) || !this.isValid(coordinates[i + 1])
 					|| this.getColor(coordinates[i]) != this.getColor(coordinates[i + 1])) {

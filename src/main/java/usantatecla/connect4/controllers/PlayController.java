@@ -33,7 +33,7 @@ public class PlayController extends CompositeController {
 	}
 
 	public void menu() {
-		List<CommandController> commandsMenu = componentControllers.stream().map(c -> (CommandController) c)
+		List<CommandController> commandsMenu = componentControllers.stream().map(CommandController.class::cast)
 				.filter(CommandController::isActive).collect(Collectors.toList());
 
 		assert !commandsMenu.isEmpty();
