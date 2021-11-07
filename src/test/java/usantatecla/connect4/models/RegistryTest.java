@@ -9,23 +9,23 @@ import org.junit.jupiter.api.Test;
 
 class RegistryTest {
 	/*
-	 * Equivalence class undo, redo register: 0[1,..3]4  
+	 * Equivalence class undo, redo register: 0[1,..3]4
 	 */
 	private Registry registry;
-	
+
 	@BeforeEach
 	void beforeEach() {
 		Game game = mock(Game.class);
 		this.registry = new Registry(game);
 	}
-	
+
 	@Test
 	void testGivenRegistryOneRegister_whenUndo_thenIsUndoableFalse() {
 		this.registry.register();
 		this.registry.undo();
 		assertFalse(this.registry.isUndoable());
 	}
-	
+
 	@Test
 	void testGivenRegistryThreRegister_whenFourRedo_thenIsUndoableFalse() {
 		this.registry.register();
@@ -39,24 +39,24 @@ class RegistryTest {
 		this.registry.redo();
 		assertFalse(this.registry.isRedoable());
 	}
-	
+
 	@Test
 	void testGivenNewRegistry_whenIsUndoable_thenReturnFalse() {
 		assertFalse(this.registry.isUndoable());
 	}
-	
+
 	@Test
 	void testGivenNewRegistry_whenIsRedoable_thenReturnFalse() {
 		assertFalse(this.registry.isRedoable());
 	}
-	
+
 	@Test
 	void testGivenNewRegistry_whenIsUndo_thenReturnFalse() {
 		assertThrows(AssertionError.class, () -> {
 			registry.undo();
 		});
 	}
-	
+
 	@Test
 	void testGivenNewRegistry_whenIsRedo_thenReturnFalse() {
 		assertThrows(AssertionError.class, () -> {
