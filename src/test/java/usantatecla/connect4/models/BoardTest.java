@@ -58,9 +58,10 @@ class BoardTest {
 	
 	@Test
 	void giveBoardFromCharArray_whenToCharArray_thenIsEqualCharArray() {
-		String boardString = "RRRRRRRYYYYYYYRRRRRRRYYYYYYYRRRRRRRYYYYYYY";
-		char[] boardToChar = new BoardSimpleBuilder().formString(boardString).buid().toCharacterArray();
-		assertEquals(boardString, new String(boardToChar));
+		String boardFromStr = "RRRRRRRYYYYYYYRRRRRRRYYYYYYYRRRRRRRYYYYYYY";
+		Board board = new BoardSimpleBuilder().formString(boardFromStr).buid();
+		String boardToStr = new String (board.toCharacterArray());
+		assertEquals(boardFromStr, boardToStr);
 	}
 
 	@Test
