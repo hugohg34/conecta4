@@ -61,8 +61,7 @@ public class Game {
 		if (getClass() != obj.getClass())
 			return false;
 		Game other = (Game) obj;
-		boolean result = this.turn.equals(other.turn);
-		return result;
+		return this.turn.equals(other.turn);
 	}
 	
 	@Override

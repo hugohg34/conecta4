@@ -8,7 +8,7 @@ class GameMementoTest {
 	
 	@Test
 	void given_GameAndGameFromMemento_whenPutToken_thenEqualGames() {
-		int[] putTokens = {0,2,4,5,6,1,3,5};
+		int[] putTokens = {0,2,4,6,1,3,5};
 		Game game = creteGameWithPutTokens(putTokens);
 		GameMemento gameMemento = createGameMementoWithPutTokens(putTokens);
 		Game gameFromMemento = new Game();
