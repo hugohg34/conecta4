@@ -49,8 +49,4 @@ public class Turn {
 		return this.getActivePlayer().getPutTokenError(column);
 	}
 
-	public void setPlayerPutTokens(Color color, int playerPutTokens) {
-		this.players[color.ordinal()].set(playerPutTokens);
-	}
-
 }
