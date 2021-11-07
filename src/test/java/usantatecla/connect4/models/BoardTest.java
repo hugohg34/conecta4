@@ -20,26 +20,23 @@ class BoardTest {
 	}
 
 	/*
-	 * Equivalence Class
-	 * For Column:
-	 * null, ... -1 [0,...6] 7, ...
-	 * 
+	 * Equivalence Class For Column: null, ... -1 [0,...6] 7, ...
 	 */
-	
+
 	@Test
 	void testGivenEmptyBoard_when_PutTokenNullColor_thenAssertionError() {
 		assertThrows(AssertionError.class, () -> {
 			this.board.putToken(1, null);
 		});
 	}
-	
+
 	@Test
 	void testGivenEmptyBoard_whenPutTokenOutsideLeftColumn_thenArrayIndexOutOfBoundsException() {
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
 			this.board.putToken(-1, Color.RED);
 		});
 	}
-	
+
 	@Test
 	void testGivenEmptyBoard_whenPutTokenInsideLeftColumn_thenGetColorIsEqual() {
 		Color color = Color.RED;
@@ -48,16 +45,16 @@ class BoardTest {
 		ConcreteCoordinate coordinate = new ConcreteCoordinate(0, column);
 		assertEquals(color, this.board.getColor(coordinate));
 	}
-	
+
 	@Test
 	void testGivenEmptyBoard_whenPutTokenInsideRightColumn_thenGetColorIsEqual() {
 		Color color = Color.YELLOW;
-		int column = Board.COLUMNS -1;
+		int column = Board.COLUMNS - 1;
 		this.board.putToken(column, color);
 		ConcreteCoordinate coordinate = new ConcreteCoordinate(0, column);
 		assertEquals(color, this.board.getColor(coordinate));
 	}
-	
+
 	@Test
 	void testGivenEmptyBoard_whenPutTokenOutsideRigtColumn_thenArrayIndexOutOfBoundsException() {
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
@@ -73,13 +70,11 @@ class BoardTest {
 		});
 	}
 
-
-	
 	@Test
 	void testGiveBoardFromCharArray_whenToCharArray_thenIsEqualCharArray() {
 		String boardFromStr = "RRRRRRRYYYYYYYRRRRRRRYYYYYYYRRRRRRRYYYYYYY";
 		Board board = new BoardSimpleBuilder().formString(boardFromStr).buid();
-		String boardToStr = new String (board.toCharacterArray());
+		String boardToStr = new String(board.toCharacterArray());
 		assertEquals(boardFromStr, boardToStr);
 	}
 
