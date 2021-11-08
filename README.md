@@ -1,5 +1,5 @@
 # connect4 con undo redo 
 
-## Arquitectura MVP Presentation Model 
+## Arquitectura MVP Pasive view 
 
 ![modelo](doc/analisis.png)
