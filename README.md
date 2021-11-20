@@ -4,6 +4,9 @@
 
 ![Casos de uso](doc/out/casos-uso.png)
 
+## Contexto de casos de uso
+
+![contexto de casos de uso](doc/out/contexto.png)
 
 ## Arquitectura MVP Presentation Model 
 

@@ -1,0 +1,21 @@
+@startuml
+title Contexto
+state INITIAL
+state IN_GAME
+state OUT_GAME
+state is_finish <<choice>>
+state is_resume <<choice>>
+
+[*] -down-> INITIAL
+INITIAL --> IN_GAME : Start
+IN_GAME --> is_finish : PutToken
+IN_GAME --> is_finish : Redo
+IN_GAME --> is_finish : Udo
+is_finish --> IN_GAME
+
+is_finish --> OUT_GAME : finish
+OUT_GAME --> is_resume: resume
+is_resume --> INITIAL
+is_resume --> EXIT
+
+@enduml
