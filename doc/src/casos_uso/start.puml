@@ -1,4 +1,4 @@
-@Startuml
+@startuml
 title "Start Use Case"
 
 state INITIAL
@@ -17,6 +17,6 @@ state Start {
 	one --> [*]
 }
 
-Start --> "INGAME"
+Start --> IN_GAME
 
 @enduml
