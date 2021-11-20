@@ -1,0 +1,22 @@
+@Startuml
+title "Start Use Case"
+
+state INITIAL
+state Start
+
+INITIAL --> Start
+
+state Start {
+	state " " as one
+	[*] --> one
+	note on link #white
+	<b>System show</b>
+	* Welcome Message
+	* Empty board
+	end note
+	one --> [*]
+}
+
+Start --> "INGAME"
+
+@enduml
