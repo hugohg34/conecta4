@@ -1,0 +1,12 @@
+@startuml
+title "Resume Use Case"
+
+state OUT_GAME
+
+[*] --> OUT_GAME
+OUT_GAME --> one : System request resume or exit
+state " " as one
+one -[#green]-> EXIT : [player chooses to exit]
+one --> INITIAL : [player chooses to resume]
+
+@enduml
