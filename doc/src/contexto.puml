@@ -10,7 +10,7 @@ state is_resume <<choice>>
 INITIAL --> IN_GAME : Start
 IN_GAME --> is_finish : PutToken
 IN_GAME --> is_finish : Redo
-IN_GAME --> is_finish : Udo
+IN_GAME --> is_finish : Undo
 is_finish --> IN_GAME
 
 is_finish --> OUT_GAME : finish
