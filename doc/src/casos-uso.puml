@@ -1,0 +1,14 @@
+@startuml
+title "Casos de uso"
+left to right direction
+
+actor :Player:
+
+Player --> (Start)
+Player --> (Play)
+Player --> (Resume)
+Play ..> (PutToken) :<extend>
+Play ..> (Undo) :<extend>
+Play ..> (Redo) :<extend>
+
+@enduml
