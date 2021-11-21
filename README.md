@@ -35,6 +35,9 @@
 # Analisis
 ## Arquitectura
 
+![putToken](doc/out/analysis/architecture.png)
+
+
 ## Casos de uso
 
 

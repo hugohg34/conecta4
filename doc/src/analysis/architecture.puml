@@ -1,0 +1,39 @@
+@startuml
+
+title "Architecture Analysis"
+
+package Controllers {
+	abstract class Controller
+	Controller <|-- StartController
+	Controller <|-- PlayController
+	Controller <|-- UndoController
+	Controller <|-- RedoController
+	Controller <|-- ResumeController
+}
+
+package Views{
+	class StartView
+	class PlayView
+	class PutTokenView
+	class BoardView
+	class RedoView
+	class UndoView
+	class ResumeView
+}
+
+package Models{
+	class Game
+	class Board
+	class Player
+	class Turn
+	
+	Game *--> Board
+	Game *--> Turn
+	Turn *--> Board
+	Turn *--> Player
+}
+
+Controllers ..> Views
+Controllers ..> Models
+
+@enduml
