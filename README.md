@@ -14,6 +14,9 @@
 ### Start
 ![start](doc/out/casos_uso/start.png)
 
+### Play
+![play](doc/out/casos_uso/play.png)
+
 ### Put token
 ![putToken](doc/out/casos_uso/putToken.png)
 
