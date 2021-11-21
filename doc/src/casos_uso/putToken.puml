@@ -2,63 +2,43 @@
 title "Put token Use Case"
 
 state IN_GAME
-state PutToken
+state " " as initial
+state " " as playerPut
+state is_validPut <<choice>>
+state " " as tokenPlaced
+state " " as winner
+state " " as noWinner
+state OUT_GAME
+state is_winner <<choice>>
+[*] -[#green]-> IN_GAME
+IN_GAME -[#green]-> initial
+note on link #white
+	<b>System show</b>
+	* Board
+	* Color of current player
+end note
+initial -[#green]-> playerPut
+note on link #white : System require Player put token
+playerPut -[#green]-> is_validPut
+note on link #white : System check if is valid put token
 
-IN_GAME --> PutToken
-
-state PutToken {
-	state " " as zero
-	state " " as one
-	state " " as two
-	state is_validPut <<choice>>
-	state " " as tree
-	state " " as four
-	state " " as five
-	state is_winner <<choice>>
-	[*] -[#green]-> zero
-	zero -[#green]-> one
+is_validPut -[#green]-> tokenPlaced : [yes]
+	tokenPlaced -[#green]-> is_winner
+	note on link #white : system show updated board
+	is_winner --> winner
+	winner --> OUT_GAME
+	note on link #white : System show winner menssage
+	OUT_GAME --> [*]
+	is_winner -[#green]-> noWinner : [no winner]
+	noWinner -[#green]-> [*]
 	note on link #white
-		<b>System show</b>
-		* Board
-		* Color of current player
+		<b>system allow</b>
+		* undo
+		* redo
+		* put token
 	end note
-	one -[#green]-> two
-	note on link #white
-		System require Player put token
-	end note
-	two -[#green]-> is_validPut
-	note on link #white
-		System check if is valid put token
-	end note
-	
-	is_validPut -[#green]-> tree : [yes]
-		tree -[#green]-> is_winner
-		note on link #white
-			system show updated board
-		end note
-		is_winner --> four : [winner]
-		four --> [*]
-		note on link #white
-			System show winner menssage
-		end note
-		is_winner -[#green]-> five
-		note on link #white
-			System change turn
-		end note
-		five -[#green]-> [*]
-		note on link #white
-			<b>system allow</b>
-			* undo
-			* redo
-			* put token
-		end note
-			
-	is_validPut --> one
-		note on link #white
-			System show error
-		end note
-}
-
-PutToken --> OUT_GAME
+		
+is_validPut --> initial
+	note on link #white : System show error
 
 @enduml
