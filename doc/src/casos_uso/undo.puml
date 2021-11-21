@@ -1,0 +1,34 @@
+@startuml
+title "Undo Use Case"
+
+state IN_GAME
+state one
+state is_undoable <<choice>>
+state undoable
+state noUndoable
+
+[*] --> IN_GAME
+IN_GAME --> one
+note on link #white : Current player requests Undo
+one --> is_undoable
+note on link #white : Systm show updated board
+is_undoable --> undoable : [yes]
+note on link #white
+	Disc of player on  board > 0
+end note
+is_undoable --> noUndoable
+undoable --> [*]
+note on link #white
+	<b>System allow</b>
+	* Put Token
+	* Redo if redoable
+	* Undo if undoable
+end note
+noUndoable --> [*]	
+note on link #white
+	<b>System allow</b>
+	* Put Token
+	* Redo if redoable
+end note
+
+@enduml
