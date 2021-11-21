@@ -8,16 +8,21 @@ state PutToken
 
 [*] -down-> IN_GAME
 IN_GAME --> INITIAL
-INITIAL -[#green]-> playerChoice : System request action
+INITIAL -[#green]-> playerChoice
+note on link #white
+	System show available actions
+	System requires an action
+end note
+playerChoice -[#green]-> PutToken
+PutToken -[#green]-> is_winner
+is_winner -[#green]-> Resume : [winner]
+
 playerChoice --> Undo
 playerChoice --> Redo
 Undo --> INITIAL
 Redo --> INITIAL
-playerChoice --> INITIAL : Redo
-playerChoice -[#green]-> PutToken
-PutToken -[#green]-> is_winner
-is_winner -[#green]-> Resume : [winner]
-is_winner --> INITIAL : change turn
+
+is_winner --> INITIAL : system change turn
 Resume --> [*]
 
 @enduml
