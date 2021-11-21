@@ -17,6 +17,12 @@
 ### Put token
 ![putToken](doc/out/casos_uso/putToken.png)
 
+### Undo
+![putToken](doc/out/casos_uso/undo.png)
+
+### Redo
+![putToken](doc/out/casos_uso/redo.png)
+
 ### Resume
 ![putToken](doc/out/casos_uso/resume.png)
 

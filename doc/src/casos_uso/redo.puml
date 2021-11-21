@@ -1,0 +1,34 @@
+@startuml
+title "Redo Use Case"
+
+state IN_GAME
+state " " as one
+state is_redoable <<choice>>
+state " " as redoable
+state " " as noRedoable
+
+[*] --> IN_GAME
+IN_GAME --> one
+note on link #white : Current player requests Redo
+one --> is_redoable
+note on link #white : Systm show updated board
+is_redoable --> redoable : [yes]
+note on link #white
+	undo has been called before
+end note
+is_redoable --> noRedoable
+redoable --> [*]
+note on link #white
+	<b>System allow</b>
+	* Put Token
+	* Redo
+	* Undo if undoable
+end note
+noRedoable --> [*]	
+note on link #white
+	<b>System allow</b>
+	* Put Token
+	* Undo if undoable
+end note
+
+@enduml
