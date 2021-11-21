@@ -35,10 +35,13 @@
 # Analisis
 ## Arquitectura
 
-![putToken](doc/out/analysis/architecture.png)
+![architecture](doc/out/analysis/architecture.png)
 
 
-## Casos de uso
+## Casos de uso 
+
+### Play
+![architecture](doc/out/analysis/use-case/playController.png)
 
 
 ## Arquitectura MVP Presentation Model 

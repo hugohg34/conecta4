@@ -1,0 +1,44 @@
+@startuml
+
+title "PlayController Analysis"
+
+package Controllers {
+	object PlayController
+	object PutTokenController
+	object UndoController
+	object RedoController
+}
+package Views{
+	object PlayView
+	object BoardView
+}
+
+package Models{
+	object Game
+}
+
+PlayController *--> PutTokenController : control
+PlayController *--> UndoController : control
+PlayController *--> RedoController : control
+PlayController ..> PlayView
+note on link #white
+	show()
+	set(Color)
+end note
+PlayView --> BoardView
+note on link #white
+	show()
+	set(Color)
+end note
+
+PlayController *--> Game
+note on link #white
+	next()
+	getActiveColor()
+	isConnect4()
+	getColor(ConcreteCoordinate)
+	putToken(int)
+	getPutTokenError(int)
+end note
+
+@enduml

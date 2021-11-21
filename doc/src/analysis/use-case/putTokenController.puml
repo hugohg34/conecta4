@@ -1,0 +1,61 @@
+@startuml
+
+title "PlayController Analysis"
+
+package Controllers {
+	class PlayController
+	class PutTokenController
+	class UndoController
+	class RedoController
+}
+package Views{
+	class StartView
+	class PlayView
+	class PutTokenView
+	class BoardView
+}
+
+package Models{
+	class Game
+	class Board
+	class Player
+	class Turn
+	
+	Game *--> Board
+	Game *--> Turn
+	Turn *--> Board
+	Turn *--> Player
+}
+
+PlayController *--> PutTokenController : control
+PlayController *--> UndoController : control
+PlayController *--> RedoController : control
+PlayController ..> BoardView
+note on link #white
+	show()
+	set(Color)
+end note
+PutTokenController ..> PutTokenView : readColumn
+
+PutTokenController ..> Game
+note on link #white
+	getPutTokenError(column)
+	putToken(column)
+	next()
+	
+	
+reset()
+next()
+getActiveColor()
+isConnect4()
+getColor(ConcreteCoordinate)
+putToken(int)
+getPutTokenError(int)
+createMemento()
+setMemento(GameMemento)
+equals(Object)
+hashCode()	
+	
+end note
+
+@enduml
