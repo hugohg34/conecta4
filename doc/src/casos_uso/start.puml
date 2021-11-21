@@ -2,21 +2,16 @@
 title "Start Use Case"
 
 state INITIAL
-state Start
+state " " as one
 
-INITIAL --> Start
-
-state Start {
-	state " " as one
-	[*] --> one
-	note on link #white
-	<b>System show</b>
-	* Welcome Message
-	* Empty board
-	end note
-	one --> [*]
-}
-
-Start --> IN_GAME
+[*] --> INITIAL
+INITIAL --> one
+note on link #white
+<b>System show</b>
+* Welcome Message
+* Empty board
+end note
+one --> IN_GAME
+IN_GAME --> [*]
 
 @enduml
