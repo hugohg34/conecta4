@@ -1,33 +1,42 @@
 # connect4 con undo redo 
 
+# Requisitos
+
 ## casos de uso
 
-![Casos de uso](doc/out/casos-uso.png)
+![Casos de uso](doc/out/requirements/use-case.png)
 
 ## Contexto de casos de uso
 
-![contexto de casos de uso](doc/out/contexto.png)
+![contexto de casos de uso](doc/out/requirements/context.png)
 
 
 ## Descripción de casos de uso
 
 ### Start
-![start](doc/out/casos_uso/start.png)
+![start](doc/out/requirements/use-case/start.png)
 
 ### Play
-![play](doc/out/casos_uso/play.png)
+![play](doc/out/requirements/use-case/play.png)
 
 ### Put token
-![putToken](doc/out/casos_uso/putToken.png)
+![putToken](doc/out/requirements/use-case/putToken.png)
 
 ### Undo
-![putToken](doc/out/casos_uso/undo.png)
+![putToken](doc/out/requirements/use-case/undo.png)
 
 ### Redo
-![putToken](doc/out/casos_uso/redo.png)
+![putToken](doc/out/requirements/use-case/redo.png)
 
 ### Resume
-![putToken](doc/out/casos_uso/resume.png)
+![putToken](doc/out/requirements/use-case/resume.png)
+
+
+# Analisis
+## Arquitectura
+
+## Casos de uso
+
 
 ## Arquitectura MVP Presentation Model 
 
