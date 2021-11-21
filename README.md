@@ -10,7 +10,15 @@
 
 
 ## Descripción de casos de uso
+
+### Start
 ![start](doc/out/casos_uso/start.png)
+
+### Put token
+![putToken](doc/out/casos_uso/putToken.png)
+
+### Resume
+![putToken](doc/out/casos_uso/resume.png)
 
 ## Arquitectura MVP Presentation Model 
 
