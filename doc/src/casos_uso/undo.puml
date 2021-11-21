@@ -2,10 +2,10 @@
 title "Undo Use Case"
 
 state IN_GAME
-state one
+state " " as one
 state is_undoable <<choice>>
-state undoable
-state noUndoable
+state " " as undoable
+state " " as noUndoable
 
 [*] --> IN_GAME
 IN_GAME --> one
