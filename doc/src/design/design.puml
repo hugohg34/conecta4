@@ -1,0 +1,118 @@
+@startuml
+
+title "Architecture design"
+
+package Views{
+	class StartView{
+		+ show()
+	}
+	class PlayView{
+		+ show()
+		+ showWinner()
+		+ set(Color)
+	}
+	class PutTokenView{
+		+ readColumn()
+	}
+	
+	class BoardView(){
+		+ show()
+		+ set(Color)
+	}
+	class menuView(){
+		+ showOption(int code, String description)
+		+ readOption()
+	}
+	class ResumeView{
+		+ read()
+	}
+}
+
+package Models{
+	class Game{
+		+ reset()
+		+ next()
+		+ getActiveColor()
+		+ isConnect4()
+		+ getColor(ConcreteCoordinate)
+		+ putToken(int)
+		+ getPutTokenError(int)
+		+ createMemento()
+		+ setMemento(GameMemento)
+	}
+	
+	class Session{
+		+ reset()
+		+ undoable()
+		+ redoable()
+		+ undo()
+		+ redo()
+		+ next()
+		+ getColor(ConcreteCoordinate)
+		+ isConnect4()
+		+ getActiveColor()
+		+ getPutTokenError(int)
+		+ putToken(int)	
+	}
+	
+	class Registry{
+		+ Registry(Game)
+		+ reset()
+		+ register()
+		+ undo()
+		+ redo()
+		+ isUndoable()
+		+ isRedoable()
+	}
+	
+	class GameMemento{
+		+ GameMemento(Board, Turn)
+		+ getBoard()
+		+ getActivePlayer()
+	}
+	
+	class Board{
+		+ ROWS : int
+		+ COLUMNS : int
+		+ GOALS_IN_DIRECTION : int
+		+ reset()
+		+  putToken(int, Color)
+		+ thereIsEmpty(int)
+		+ getColor(ConcreteCoordinate)
+		+ isConnect4()
+		+ toCharacterArray()
+		+ getColors()
+	}
+	class Player{
+		+ Player(Color, Board)
+		+ putToken(int)
+		+ getPutTokenError(int)
+		+ getColor()
+	}
+	class Turn{
+		+ NUMBER_PLAYERS : int
+		+ Turn(Board)
+		+ reset()
+		+ next()
+		+ getActivePlayer()
+		+ setActivePlayer(int)
+		+ getActiveColor()
+		+ putToken(int)
+		+ getPutTokenError(int)
+	}
+	
+	Session *--> Game
+	Session *--> Registry
+	Registry *--> Game
+	Registry o--> GameMemento : 0-n
+	
+	Game *--> Board
+	Game *--> Turn
+	Turn *--> Board
+	Turn *--> Player :2
+}
+
+Controllers ..> Views
+Controllers ..> Models
+
+@enduml

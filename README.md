@@ -41,9 +41,10 @@
 ## Casos de uso 
 
 ### Play
-![architecture](doc/out/analysis/use-case/playController.png)
+![playController](doc/out/analysis/use-case/playController.png)
 
 
-## Arquitectura MVP Presentation Model 
+# Diseño
+## Arquitectura
+![desingArq](doc/out/design/design.png)
 
-![modelo](doc/analisis.png)
