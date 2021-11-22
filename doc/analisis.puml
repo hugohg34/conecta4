@@ -65,7 +65,6 @@ ConsoleConnect4 *--> ConsoleViewFactory
 ConsoleViewFactory ..> MenuConsoleView 
 
 
-note bottom of [ViewFactory]: Patron Abstract Factory\n\n interfaz para crear familias de objetos relacionados o dependientes entre si, sin tener que especificar su clase concreta"
 
 
 @enduml
