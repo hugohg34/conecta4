@@ -48,3 +48,6 @@
 ## Arquitectura
 ![desingArq](doc/out/design/design.png)
 
+## PutTokenController
+![desingArq](doc/out/design/controllers/putTokenController.png)
+
