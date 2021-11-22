@@ -28,11 +28,17 @@ package Views{
 	}
 }
 
+package Types{
+	enum PlayerColor{
+		RED, YELLOW, NULL
+	}
+}
+
 package Models{
 	class Game{
 		+ reset()
 		+ next()
-		+ getActiveColor()
+		+ getActivePlayerColor()
 		+ isConnect4()
 		+ getColor(ConcreteCoordinate)
 		+ putToken(int)
@@ -50,7 +56,7 @@ package Models{
 		+ next()
 		+ getColor(ConcreteCoordinate)
 		+ isConnect4()
-		+ getActiveColor()
+		+ getActivePlayerColor()
 		+ getPutTokenError(int)
 		+ putToken(int)	
 	}
@@ -68,7 +74,7 @@ package Models{
 	class GameMemento{
 		+ GameMemento(Board, Turn)
 		+ getBoard()
-		+ getActivePlayer()
+		+ getActivePlayerColor()
 	}
 	
 	class Board{
@@ -83,20 +89,14 @@ package Models{
 		+ toCharacterArray()
 		+ getColors()
 	}
-	class Player{
-		+ Player(Color, Board)
-		+ putToken(int)
-		+ getPutTokenError(int)
-		+ getColor()
-	}
+	
 	class Turn{
 		+ NUMBER_PLAYERS : int
 		+ Turn(Board)
 		+ reset()
 		+ next()
-		+ getActivePlayer()
-		+ setActivePlayer(int)
-		+ getActiveColor()
+		+ setActivePlayerColor(int)
+		+ getActivePlayerColor()
 		+ putToken(int)
 		+ getPutTokenError(int)
 	}
@@ -109,7 +109,7 @@ package Models{
 	Game *--> Board
 	Game *--> Turn
 	Turn *--> Board
-	Turn *--> Player :2
+	Turn *--> PlayerColor :2
 }
 
 Controllers ..> Views
