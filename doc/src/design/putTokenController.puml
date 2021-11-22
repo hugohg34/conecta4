@@ -1,0 +1,136 @@
+@startuml
+
+title "Put token Design"
+
+package Controllers {
+	class PlayController
+	class PutTokenController
+}
+package Views{
+	class PlayView
+	class PutTokenView
+	class BoardView
+}
+
+package Types{
+	enum PlayerColor
+}
+
+package Models{
+	class Game{
+		+ reset()
+		+ next()
+		+ getActivePlayerColor()
+		+ isConnect4()
+		+ getColor(ConcreteCoordinate)
+		+ putToken(int)
+		+ getPutTokenError(int)
+		+ createMemento()
+		+ setMemento(GameMemento)
+	}
+	
+	class Session{
+		+ reset()
+		+ undoable()
+		+ redoable()
+		+ undo()
+		+ redo()
+		+ next()
+		+ getColor(ConcreteCoordinate)
+		+ isConnect4()
+		+ getActivePlayerColor()
+		+ getPutTokenError(int)
+		+ putToken(int)	
+	}
+	
+	class Registry{
+		+ Registry(Game)
+		+ reset()
+		+ register()
+		+ undo()
+		+ redo()
+		+ isUndoable()
+		+ isRedoable()
+	}
+	
+	class GameMemento{
+		+ GameMemento(Board, Turn)
+		+ getBoard()
+		+ getActivePlayerColor()
+	}
+	
+	class Board{
+		+ ROWS : int
+		+ COLUMNS : int
+		+ GOALS_IN_DIRECTION : int
+		+ reset()
+		+  putToken(int, Color)
+		+ thereIsEmpty(int)
+		+ getColor(ConcreteCoordinate)
+		+ isConnect4()
+		+ toCharacterArray()
+		+ getColors()
+	}
+
+	class Turn{
+		+ NUMBER_PLAYERS : int
+		+ Turn(Board)
+		+ reset()
+		+ next()
+		+ getActivePlayerColor()
+		+ setActivePlayerColor(int)
+		+ putToken(int)
+		+ getPutTokenError(int)
+	}
+	
+	Session *-left-> Game
+	note on link #white
+		getPutTokenError(column)
+		putToken(column)
+		next()
+	end note
+
+	Session *--> Registry
+	note on link #white
+		register()
+	end note
+	Registry *--> Game
+	note on link #white
+		createMemento()
+	end note
+	Registry o--> GameMemento : 0-n
+	
+	Game *--> Board
+	Game *--> Turn
+		note on link #white
+		getPutTokenError(column)
+		putToken(column)
+		next()
+	end note
+	Turn *--> Board
+	note on link #white
+		thereIsEmpty(int)
+		putToken(int, Color)
+	end note
+	Turn *--> PlayerColor :2
+
+	
+}
+
+PlayController ..> PutTokenController : control
+PlayController ..> PlayView
+note on link #white
+	show()
+	set(Color)
+end note
+PlayView ..> BoardView
+PutTokenController ..> PutTokenView : readColumn
+
+PutTokenController ..> Session
+note on link #white
+	getPutTokenError(column)
+	putToken(column)
+	next()
+end note
+
+@enduml
